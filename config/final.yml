@@ -1,0 +1,4 @@
+---
+blobstore:
+  provider: local
+final_name: springernature-custom-alerts-dashboards
