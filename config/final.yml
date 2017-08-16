@@ -1,4 +1,6 @@
 ---
 blobstore:
   provider: local
+  options:
+    blobstore_path: /tmp/springernature-custom-alerts-dashboards-boshrelease
 final_name: springernature-custom-alerts-dashboards
