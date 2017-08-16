@@ -1,0 +1,15 @@
+---
+packages: []
+jobs:
+- name: mysql_cluster_dashboards
+  version: c59a4a867a4d089a33b598bca1a6684e3a1d3b9e
+  fingerprint: c59a4a867a4d089a33b598bca1a6684e3a1d3b9e
+  sha1: 85d4157d7d7a30c244ff2ec65c75187a4950ee7d
+license:
+  version: dd2876e08d0816dd876506d44442c2e814724a1d
+  fingerprint: dd2876e08d0816dd876506d44442c2e814724a1d
+  sha1: b9cfafc48f15622c99ae8fa72b57c2a43081af94
+commit_hash: 1c9dfb03
+uncommitted_changes: true
+name: springernature-custom-alerts-dashboards
+version: '1'
