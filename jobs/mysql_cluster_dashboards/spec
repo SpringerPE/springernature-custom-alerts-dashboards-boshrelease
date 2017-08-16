@@ -1,0 +1,16 @@
+---
+name: mysql_cluster_dashboards
+
+packages: []
+
+# DO NOT use the same names as other dashboards (from other jobs)
+# otherwise they could be overwriten
+templates:
+  sn_mysql_cluster_overview.json: sn_mysql_cluster_overview.json
+  sn_mysql_cluster_galera.json: sn_mysql_cluster_galera.json
+  sn_mysql_cluster_innodb.json: sn_mysql_cluster_innodb.json
+  sn_mysql_cluster_innodb_advanced.json: sn_mysql_cluster_innodb_advanced.json
+  sn_mysql_cluster_table.json: sn_mysql_cluster_table.json
+  sn_mysql_cluster_user_statistics.json: sn_mysql_cluster_user_statistics.json
+
+properties: {}
