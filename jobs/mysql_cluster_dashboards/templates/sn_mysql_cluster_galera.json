@@ -117,7 +117,7 @@
           },
           "targets": [
             {
-              "expr": "mysql_global_status_wsrep_cluster_size{cluster=~\"$cluster\", instance=~\"$host\"}",
+              "expr": "mysql_global_status_wsrep_cluster_size{instance=~\"$host\"}",
               "intervalFactor": 2,
               "refId": "A",
               "step": 60
@@ -192,7 +192,7 @@
           },
           "targets": [
             {
-              "expr": "mysql_global_status_wsrep_cluster_status{cluster=~\"$cluster\", instance=~\"$host\"}",
+              "expr": "mysql_global_status_wsrep_cluster_status{instance=~\"$host\"}",
               "intervalFactor": 2,
               "refId": "A",
               "step": 60
@@ -277,7 +277,7 @@
           },
           "targets": [
             {
-              "expr": "mysql_global_status_wsrep_ready{cluster=~\"$cluster\", instance=~\"$host\"}",
+              "expr": "mysql_global_status_wsrep_ready{instance=~\"$host\"}",
               "intervalFactor": 2,
               "refId": "A",
               "step": 60
@@ -362,7 +362,7 @@
           },
           "targets": [
             {
-              "expr": "mysql_global_status_wsrep_connected{cluster=~\"$cluster\", instance=~\"$host\"}",
+              "expr": "mysql_global_status_wsrep_connected{instance=~\"$host\"}",
               "intervalFactor": 2,
               "refId": "A",
               "step": 60
@@ -435,7 +435,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "mysql_global_status_wsrep_flow_control_paused{cluster=~\"$cluster\", instance=~\"$host\"}",
+              "expr": "mysql_global_status_wsrep_flow_control_paused{instance=~\"$host\"}",
               "interval": "$interval",
               "intervalFactor": 2,
               "legendFormat": "Flow Control Pause",
@@ -535,7 +535,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "mysql_global_status_wsrep_local_send_queue_avg{cluster=~\"$cluster\", instance=~\"$host\"}",
+              "expr": "mysql_global_status_wsrep_local_send_queue_avg{instance=~\"$host\"}",
               "interval": "$interval",
               "intervalFactor": 2,
               "legendFormat": "Avg Length Send Queue",
@@ -623,7 +623,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "mysql_global_status_wsrep_local_recv_queue_avg{cluster=~\"$cluster\", instance=~\"$host\"}",
+              "expr": "mysql_global_status_wsrep_local_recv_queue_avg{instance=~\"$host\"}",
               "interval": "$interval",
               "intervalFactor": 2,
               "legendFormat": "Avg Length Receive Queue",
