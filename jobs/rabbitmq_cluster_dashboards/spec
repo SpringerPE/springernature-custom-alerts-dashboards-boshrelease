@@ -1,0 +1,21 @@
+---
+name: rabbitmq_cluster_dashboards
+
+description: |
+  This job was created to be deployed next to grafana job from prometheus-boshrelease
+  These dashboards add cluster capabilities to group the RabbitMQ graphs by
+  a tag called 'cluster', such tag has to be added to the metrics using the scrape
+  job configuration
+
+
+
+packages: []
+
+# DO NOT use the same names as other dashboards (from other jobs)
+# otherwise they could be overwriten
+templates:
+  sn_rabbitmq_exchanges.json: sn_rabbitmq_exchanges.json
+  sn_rabbitmq_overview.json: sn_rabbitmq_overview.json
+  sn_rabbitmq_queues.json: sn_rabbitmq_queues.json
+  
+properties: {}
