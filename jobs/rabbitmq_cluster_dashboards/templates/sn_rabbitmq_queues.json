@@ -814,11 +814,6 @@
     "list": [
       {
         "allValue": null,
-        "current": {
-          "selected": true,
-          "text": "10.230.11.71:9125",
-          "value": "10.230.11.71:9125"
-        },
         "datasource": "prometheus",
         "hide": 0,
         "includeAll": false,
@@ -838,11 +833,6 @@
       },
       {
         "allValue": null,
-        "current": {
-          "selected": true,
-          "text": "/",
-          "value": "/"
-        },
         "datasource": "prometheus",
         "hide": 0,
         "includeAll": false,
@@ -862,11 +852,6 @@
       },
       {
         "allValue": null,
-        "current": {
-          "selected": true,
-          "text": "aliveness-test",
-          "value": "aliveness-test"
-        },
         "datasource": "prometheus",
         "hide": 0,
         "includeAll": false,
@@ -919,4 +904,3 @@
   "title": "RabbitMQ: Queues",
   "version": 1
 }
-

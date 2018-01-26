@@ -532,11 +532,6 @@
     "list": [
       {
         "allValue": null,
-        "current": {
-          "selected": true,
-          "text": "10.230.11.71:9125",
-          "value": "10.230.11.71:9125"
-        },
         "datasource": "prometheus",
         "hide": 0,
         "includeAll": false,
@@ -589,4 +584,3 @@
   "title": "RabbitMQ: Overview",
   "version": 1
 }
-
