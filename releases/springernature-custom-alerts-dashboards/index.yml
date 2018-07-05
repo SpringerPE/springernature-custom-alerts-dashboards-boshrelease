@@ -1,9 +1,10 @@
----
 builds:
-  b64ae447-44e1-4c60-8e1c-0a7bf12e60e1:
-    version: '1'
   14c3b3ea-d6a5-47bc-aa54-7c5d6915f770:
-    version: '2'
+    version: "2"
+  1a2d4c0e-dede-4050-512d-492e626464a1:
+    version: "4"
+  b64ae447-44e1-4c60-8e1c-0a7bf12e60e1:
+    version: "1"
   c6a9bdba-7a0c-4448-be65-80053a49a630:
-    version: '3'
-format-version: '2'
+    version: "3"
+format-version: "2"
