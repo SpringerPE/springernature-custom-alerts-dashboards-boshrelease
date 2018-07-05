@@ -6,7 +6,6 @@ DESCRIPTION="Bosh release add-on for prometheus-boshrelease to add custom resour
 GITHUB_REPO="SpringerPE/springernature-custom-alerts-dashboards-boshrelease"
 BUCKET="springernature-custom-alerts-dashboards-boshrelease"
 BOSH=bosh
-S3CMD=s3cmd
 JQ=jq
 CURL="curl -s"
 SHA1="sha1sum -b"
@@ -15,11 +14,6 @@ SHA1="sha1sum -b"
 if [ -z "$GITHUB_TOKEN" ]; then
     echo "Github TOKEN not defined!"
     echo "See https://help.github.com/articles/creating-an-access-token-for-command-line-use/"
-    exit 1
-fi
-# You need s3cmd installed and with you credentials
-if ! [ -x "$(command -v $S3CMD)" ]; then
-    echo "$S3CMD command not found!"
     exit 1
 fi
 # You need bosh installed and with you credentials
@@ -32,15 +26,9 @@ if ! [ -x "$(command -v $JQ)" ]; then
     echo "$JQ command not found!";
     exit 1
 fi
-# Checking if the bucket is there. If not, create it first (this just a check to
-# be sure that s3cmd is properly setup and with the correct credentials
-#if ! $S3CMD ls | grep -q "s3://${BUCKET}"; then
-#    echo "Bucket 's3://${BUCKET}' not found! Please create it first!"
-#    exit 1
-#fi
 
 # Creating the release
-$BOSH create release --force --final --with-tarball --name $RELEASE
+$BOSH create-release --force --final --with-tarball --name $RELEASE
 
 # Get the version of the release
 VERSION=$(ls -r -v releases/$RELEASE/$RELEASE-*.yml | sed 's/.*\/.*-\(.*\)\.yml$/\1/' | head -1)
@@ -70,7 +58,3 @@ $CURL -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octe
 
 # Delete the release
 rm -f releases/$RELEASE/$RELEASE-$VERSION.tgz
-
-# Update ACLs on bucket
-#echo "Assigning public ACL to new blobs in bucket ..."
-#$S3CMD setacl "s3://${BUCKET}" --acl-public --recursive
