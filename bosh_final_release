@@ -28,7 +28,7 @@ if ! [ -x "$(command -v $JQ)" ]; then
 fi
 
 # Creating the release
-$BOSH create-release --force --final --with-tarball --name $RELEASE
+$BOSH create-release --force --final --tarball=/tmp/$RELEASE.tgz --name $RELEASE
 
 # Get the version of the release
 VERSION=$(ls -r -v releases/$RELEASE/$RELEASE-*.yml | sed 's/.*\/.*-\(.*\)\.yml$/\1/' | head -1)
@@ -54,7 +54,7 @@ fi
 echo "$releaseid"
 # Upload the release
 echo -n "Uploading tarball ... "
-$CURL -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"releases/$RELEASE/$RELEASE-$VERSION.tgz" "https://uploads.github.com/repos/$GITHUB_REPO/releases/$releaseid/assets?name=$RELEASE-$VERSION.tgz" | $JQ -r '.browser_download_url'
+$CURL -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"/tmp/$RELEASE.tgz" "https://uploads.github.com/repos/$GITHUB_REPO/releases/$releaseid/assets?name=$RELEASE-$VERSION.tgz" | $JQ -r '.browser_download_url'
 
 # Delete the release
-rm -f releases/$RELEASE/$RELEASE-$VERSION.tgz
+rm -f /tmp/$RELEASE.tgz
