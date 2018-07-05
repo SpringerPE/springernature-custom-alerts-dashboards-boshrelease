@@ -1,0 +1,19 @@
+---
+name: cloudsql_dashboard
+
+description: |
+  This job was created to be deployed next to grafana job from prometheus-boshrelease
+  These dashboards add cluster capabilities to group the MySQL/MariaDB graphs by
+  a tag called 'cluster', such tag has to be added to the metrics using the scrape
+  job configuration
+
+
+
+packages: []
+
+# DO NOT use the same names as other dashboards (from other jobs)
+# otherwise they could be overwriten
+templates:
+  cloudsql_overview.json: cloudsql_overview.json
+
+properties: {}
