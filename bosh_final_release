@@ -41,7 +41,7 @@ git push --tags
 
 # Create a release in Github
 echo -n "Creating a new release in github ... "
-description="$DESCRIPTION, version $VERSION <br><br>sha1: $($SHA1 releases/$RELEASE/$RELEASE-$VERSION.tgz | cut -d' ' -f1)"
+description="$DESCRIPTION, version $VERSION <br><br>sha1: $($SHA1 /tmp/$RELEASE.tgz | cut -d' ' -f1)"
 printf -v DATA '{"tag_name": "v%s","target_commitish": "master","name": "v%s","body": "%s","draft": false, "prerelease": false}' "$VERSION" "$VERSION" "$description"
 releaseid=$($CURL -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/json" -XPOST --data "$DATA" "https://api.github.com/repos/$GITHUB_REPO/releases" | $JQ '.id')
 if [ -z "$releaseid" ]; then
