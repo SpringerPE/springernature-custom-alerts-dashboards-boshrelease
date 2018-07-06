@@ -1,8 +1,8 @@
 ---
-name: cloudsql_dashboard
+name: cf_app_dashboard
 
 description: |
-  Bla Bla bla
+  Bla bla Bla
 
 
 
@@ -11,6 +11,6 @@ packages: []
 # DO NOT use the same names as other dashboards (from other jobs)
 # otherwise they could be overwriten
 templates:
-  cloudsql_overview.json: cloudsql_overview.json
+  cf_app_dashboard.json: cf_app_dashboard.json
 
 properties: {}
