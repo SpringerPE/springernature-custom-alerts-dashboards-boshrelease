@@ -1,6 +1,6 @@
 ---
+name: springernature-custom-alerts-dashboards
 blobstore:
   provider: local
   options:
     blobstore_path: blobstore
-final_name: springernature-custom-alerts-dashboards
