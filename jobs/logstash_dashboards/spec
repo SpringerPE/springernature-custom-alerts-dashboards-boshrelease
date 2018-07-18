@@ -1,0 +1,16 @@
+---
+name: logstash_dashboards
+
+description: |
+  This job was created to be deployed next to grafana job from prometheus-boshrelease
+  Logstash monitoring via prometheus and logstash_exporter(https://github.com/BonnierNews/logstash_exporter)
+  Dashboards from: https://grafana.com/dashboards/2525
+
+packages: []
+
+# DO NOT use the same names as other dashboards (from other jobs)
+# otherwise they could be overwriten
+templates:
+  sn_logstash_overview.json: sn_logstash_overview.json
+  
+properties: {}
