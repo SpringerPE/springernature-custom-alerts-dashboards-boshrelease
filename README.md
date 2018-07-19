@@ -91,7 +91,7 @@ bosh  create-release --force --tarball=/tmp/release.tgz
 
 ## Creating a new final release and publishing to GitHub releases:
 
-Run: `./create-final-public-release.sh`  [version-number]
+Run: `./create-final-public-release.sh [version-number]`
 
 Notice you will need a Github token defined in a environment variable `GITHUB_TOKEN`. Please get your token here: https://help.github.com/articles/creating-an-access-token-for-command-line-use/
 and run `export GITHUB_TOKEN="xxxxxxxxxxxxxxxxx"`, after that you can use the script.
