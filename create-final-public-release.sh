@@ -137,5 +137,6 @@ rm -f "/tmp/$RELEASE-$$.tgz"
 
 echo
 echo "*** Description https://github.com/$GITHUB_REPO/releases/tag/v$version: "
+echo
 echo "$description"
 exit 0
