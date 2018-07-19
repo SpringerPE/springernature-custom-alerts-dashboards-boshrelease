@@ -135,6 +135,7 @@ $CURL -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octe
 # Delete the release
 rm -f "/tmp/$RELEASE-$$.tgz"
 
-echo "*** Description: "
+echo
+echo "*** Description https://github.com/$GITHUB_REPO/releases/tag/v$version: "
 echo "$description"
 exit 0
