@@ -75,7 +75,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(logstash_node_pipeline_duration_seconds_total[$interval])",
+              "expr": "rate(logstash_node_pipeline_duration_seconds_total{instance=~\"$instance\",pipeline=~\"$pipeline\"}[$interval])",
               "intervalFactor": 2,
               "legendFormat": "{{instance}}",
               "refId": "A",
@@ -148,7 +148,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(logstash_node_pipeline_events_in_total[$interval])",
+              "expr": "rate(logstash_node_pipeline_events_in_total{instance=~\"$instance\",pipeline=~\"$pipeline\"}[$interval])",
               "intervalFactor": 2,
               "legendFormat": "{{instance}}",
               "refId": "A",
@@ -221,7 +221,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(logstash_node_pipeline_events_filtered_total[$interval])",
+              "expr": "rate(logstash_node_pipeline_events_filtered_total{instance=~\"$instance\",pipeline=~\"$pipeline\"}[$interval])",
               "intervalFactor": 2,
               "legendFormat": "{{instance}}",
               "refId": "A",
@@ -294,7 +294,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(logstash_node_pipeline_events_out_total[$interval])",
+              "expr": "rate(logstash_node_pipeline_events_out_total{instance=~\"$instance\",pipeline=~\"$pipeline\"}[$interval])",
               "intervalFactor": 2,
               "legendFormat": "{{instance}}",
               "refId": "A",
@@ -378,7 +378,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(logstash_node_plugin_duration_seconds_total[$interval])) by (plugin)",
+              "expr": "sum(rate(logstash_node_plugin_duration_seconds_total{instance=~\"$instance\",pipeline=~\"$pipeline\"}[$interval])) by (plugin)",
               "intervalFactor": 2,
               "legendFormat": "{{plugin}}",
               "refId": "A",
@@ -450,7 +450,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(logstash_node_plugin_failures_total[$interval])) by (plugin)",
+              "expr": "sum(rate(logstash_node_plugin_failures_total{instance=~\"$instance\",pipeline=~\"$pipeline\"}[$interval])) by (plugin)",
               "intervalFactor": 2,
               "legendFormat": "{{plugin}}",
               "refId": "A",
@@ -522,7 +522,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(logstash_node_plugin_events_in_total[$interval])) by (plugin)",
+              "expr": "sum(rate(logstash_node_plugin_events_in_total{instance=~\"$instance\",pipeline=~\"$pipeline\"}[$interval])) by (plugin)",
               "intervalFactor": 2,
               "legendFormat": "{{plugin}}",
               "refId": "A",
@@ -594,7 +594,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(logstash_node_plugin_events_out_total[$interval])) by (plugin)",
+              "expr": "sum(rate(logstash_node_plugin_events_out_total{instance=~\"$instance\",pipeline=~\"$pipeline\"}[$interval])) by (plugin)",
               "intervalFactor": 2,
               "legendFormat": "{{plugin}}",
               "refId": "A",
@@ -643,335 +643,14 @@
       "showTitle": true,
       "title": "PLUGINS",
       "titleSize": "h6"
-    },
-    {
-      "collapse": false,
-      "height": null,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "height": "400px",
-          "id": 1,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": true,
-            "max": true,
-            "min": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "span": 3,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "aggregator": "sum",
-              "downsampleAggregator": "avg",
-              "downsampleFillPolicy": "none",
-              "expr": "logstash_node_mem_heap_used_bytes",
-              "intervalFactor": 2,
-              "legendFormat": "{{instance}} - heap used",
-              "metric": "logstash_node_mem_heap_used_bytes",
-              "refId": "A",
-              "step": 20
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Heap used",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "transparent": false,
-          "type": "graph",
-          "xaxis": {
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "bytes",
-              "label": "Heap",
-              "logBase": 1,
-              "max": null,
-              "min": "0",
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "height": "400px",
-          "id": 4,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": true,
-            "max": true,
-            "min": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "null",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "span": 3,
-          "stack": true,
-          "steppedLine": false,
-          "targets": [
-            {
-              "aggregator": "sum",
-              "downsampleAggregator": "avg",
-              "downsampleFillPolicy": "none",
-              "expr": "logstash_node_process_open_filedescriptors",
-              "intervalFactor": 2,
-              "legendFormat": "{{instance}}",
-              "metric": "logstash_node_process_open_filedescriptors",
-              "refId": "A",
-              "step": 20
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Open file descriptors",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "height": "400px",
-          "id": 2,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": true,
-            "max": true,
-            "min": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "span": 3,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "aggregator": "sum",
-              "downsampleAggregator": "avg",
-              "downsampleFillPolicy": "none",
-              "expr": "rate(logstash_node_gc_collection_total[$interval])",
-              "intervalFactor": 2,
-              "legendFormat": "{{instance}} - {{collector}}",
-              "metric": "logstash_node_mem_heap_used_bytes",
-              "refId": "A",
-              "step": 20
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "GC count",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "cumulative"
-          },
-          "type": "graph",
-          "xaxis": {
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "short",
-              "label": "GCs",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ]
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "datasource": "${DS_PROMETHEUS}",
-          "fill": 1,
-          "height": "400px",
-          "id": 3,
-          "legend": {
-            "alignAsTable": true,
-            "avg": true,
-            "current": true,
-            "max": true,
-            "min": true,
-            "show": true,
-            "total": false,
-            "values": true
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "span": 3,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "aggregator": "sum",
-              "downsampleAggregator": "avg",
-              "downsampleFillPolicy": "none",
-              "expr": "rate(logstash_node_gc_collection_duration_seconds_total[$interval])",
-              "intervalFactor": 2,
-              "legendFormat": "{{instance}} - {{collector}}",
-              "metric": "logstash_node_mem_heap_used_bytes",
-              "refId": "A",
-              "step": 20
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "GC time",
-          "tooltip": {
-            "shared": true,
-            "sort": 0,
-            "value_type": "cumulative"
-          },
-          "type": "graph",
-          "xaxis": {
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "format": "s",
-              "label": "GCs",
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": false
-            }
-          ]
-        }
-      ],
-      "repeat": null,
-      "repeatIteration": null,
-      "repeatRowId": null,
-      "showTitle": true,
-      "title": "JVM",
-      "titleSize": "h6"
     }
   ],
   "schemaVersion": 14,
   "style": "dark",
   "tags": [
-    "prometheus",
-    "elasticsearch",
-    "logstash"
+    "logging",
+    "logstash",
+    "pipelines"
   ],
   "templating": {
     "list": [
@@ -989,16 +668,6 @@
         "multi": false,
         "name": "interval",
         "options": [
-          {
-            "selected": false,
-            "text": "15s",
-            "value": "15s"
-          },
-          {
-            "selected": false,
-            "text": "30s",
-            "value": "30s"
-          },
           {
             "selected": true,
             "text": "1m",
@@ -1025,8 +694,48 @@
             "value": "1d"
           }
         ],
-        "query": "15s,30s,1m,5m,1h,6h,1d",
+        "query": "1m,5m,1h,6h,1d",
         "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Pipeline",
+        "multi": true,
+        "name": "pipeline",
+        "options": [],
+        "query": "label_values(logstash_node_pipeline_duration_seconds_total, pipeline)",
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "${DS_PROMETHEUS}",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Instance",
+        "multi": true,
+        "name": "instance",
+        "options": [],
+        "query": "label_values(logstash_node_pipeline_duration_seconds_total{pipeline=~\"$pipeline\"}, instance)",
+        "refresh": 1,
+        "regex": "",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
       }
     ]
   },
@@ -1060,7 +769,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Logstash metrics overview",
+  "title": "Logstash Pipeline metrics overview",
   "version": 13,
   "description": "Logstash monitoring"
 }
