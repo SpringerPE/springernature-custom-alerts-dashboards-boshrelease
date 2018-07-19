@@ -76,9 +76,25 @@ prometheus job per MySQL cluster):
 
 
 
-# Creating a new final release
+# Developing
 
-Run: `./bosh_final_release`
+Blobs of this release are stored in this repo `blobstore`. Idea was taken from here: https://starkandwayne.com/blog/bosh-releases-with-git-lfs/
+
+After this, files created by `bosh create-release --final` can be committed to your repo with git commit and will be stored with git lfs. 
+No more need for bosh sync-blobs, instead just git commit && git push. This is automatically done by the script `create-final-public-release.sh`
+
+To create a dev release, just run:
+
+`
+bosh  create-release --force --tarball=/tmp/release.tgz
+`
+
+## Creating a new final release and publishing to GitHub releases:
+
+Run: `./create-final-public-release.sh`
+
+Notice you will need a Github token defined in a environment variable `GITHUB_TOKEN`. Please get your token here: https://help.github.com/articles/creating-an-access-token-for-command-line-use/
+and run `export GITHUB_TOKEN="xxxxxxxxxxxxxxxxx"`, after that you can use the script.
 
 
 # Author
