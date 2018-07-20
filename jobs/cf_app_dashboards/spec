@@ -1,10 +1,8 @@
 ---
-name: cf_app_dashboard
+name: cf_app_dashboards
 
 description: |
   Bla bla Bla
-
-
 
 packages: []
 

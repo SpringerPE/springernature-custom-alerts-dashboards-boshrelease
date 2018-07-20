@@ -1,10 +1,8 @@
 ---
-name: cloudsql_dashboard
+name: cloudsql_dashboards
 
 description: |
   Bla Bla bla
-
-
 
 packages: []
 
