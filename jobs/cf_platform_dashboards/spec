@@ -1,0 +1,14 @@
+---
+name: cf_platform_dashboards
+
+description: |
+  Bla bla Bla
+
+packages: []
+
+# DO NOT use the same names as other dashboards (from other jobs)
+# otherwise they could be overwriten
+templates:
+  cf_platform_dashboard.json: cf_platform_dashboard.json
+
+properties: {}
