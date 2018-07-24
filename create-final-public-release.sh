@@ -40,6 +40,13 @@ then
     exit 1
 fi
 
+# You need sha1sum installed  (brew md5sha1sum)
+if ! [ -x "$(command -v $SHA1)" ]
+then
+    echo "ERROR: $SHA1 command not found! Please install it and make it available in the PATH"
+    exit 1
+fi
+
 case $# in
     0)
         echo "*** Creating a new release. Automatically calculating next release version number"
@@ -81,7 +88,7 @@ then
 fi
 echo "$git_changes"
 
-#Uploading blobs
+# Uploading blobs
 echo "* Uploading blobs to the blobstore ..."
 $BOSH_CLI upload-blobs
 
