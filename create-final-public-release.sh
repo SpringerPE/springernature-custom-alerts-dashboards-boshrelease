@@ -108,6 +108,7 @@ fi
 echo "* Commiting git changes ..."
 git add .final_builds releases/$RELEASE/index.yml "releases/$RELEASE/$RELEASE-$version.yml" blobstore
 git commit -m "$RELEASE v$version Boshrelease"
+git push
 git push --tags
 
 # Create a release in Github
