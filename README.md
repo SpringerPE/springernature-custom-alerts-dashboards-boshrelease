@@ -1,5 +1,4 @@
 # Add-on BOSH Release for [prometheus-boshrelease](https://github.com/cloudfoundry-community/prometheus-boshrelease)
-#Test Line
 Add-on release with custom resources: dashboards, alerts for Prometheus Boshrelease.
 Please, read the specs of each job to know more.
 
