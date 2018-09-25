@@ -1,0 +1,255 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 99,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "GraphiteApi",
+      "fontSize": "80%",
+      "format": "currencyUSD",
+      "gridPos": {
+        "h": 12,
+        "w": 11,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "interval": null,
+      "legend": {
+        "show": true,
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Under graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.engineering_enablement,stats.gauges.syslog-app-drain.api_snpaas_eu.*,0)",
+          "format": "time_series",
+          "instant": true,
+          "intervalFactor": 1,
+          "refId": "A",
+          "target": "aliasByNode(sortByMaxima(scale(scale(asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.*), 0.01), 112)), 4)",
+          "textEditor": false
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Log Cost Per ORG",
+      "transparent": false,
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "GraphiteApi",
+      "fontSize": "80%",
+      "format": "currencyUSD",
+      "gridPos": {
+        "h": 12,
+        "w": 13,
+        "x": 11,
+        "y": 0
+      },
+      "id": 3,
+      "interval": null,
+      "legend": {
+        "show": true,
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Under graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.engineering_enablement,stats.gauges.syslog-app-drain.api_snpaas_eu.*,0)",
+          "format": "time_series",
+          "instant": true,
+          "intervalFactor": 1,
+          "refId": "A",
+          "target": "aliasByNode(sortByMaxima(scale(scale(asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.*.*), 0.01), 112)), 4, 5)",
+          "textEditor": false
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Log Cost Per Space/Team",
+      "transparent": false,
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "GraphiteApi",
+      "fontSize": "80%",
+      "format": "currencyUSD",
+      "gridPos": {
+        "h": 12,
+        "w": 11,
+        "x": 0,
+        "y": 12
+      },
+      "id": 5,
+      "interval": null,
+      "legend": {
+        "show": true,
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Under graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.engineering_enablement,stats.gauges.syslog-app-drain.api_snpaas_eu.*,0)",
+          "format": "time_series",
+          "instant": true,
+          "intervalFactor": 1,
+          "refId": "A",
+          "target": "aliasByNode(scale(scale(asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.*.*.demo-logs.*), 0.01), 112), 7)",
+          "textEditor": true
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Log Cost Per ORG",
+      "transparent": false,
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "GraphiteApi",
+      "fontSize": "80%",
+      "format": "currencyUSD",
+      "gridPos": {
+        "h": 12,
+        "w": 13,
+        "x": 11,
+        "y": 12
+      },
+      "id": 4,
+      "interval": null,
+      "legend": {
+        "show": true,
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Under graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "strokeWidth": "1",
+      "targets": [
+        {
+          "expr": "asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.engineering_enablement,stats.gauges.syslog-app-drain.api_snpaas_eu.*,0)",
+          "format": "time_series",
+          "instant": true,
+          "intervalFactor": 1,
+          "refId": "A",
+          "target": "aliasByNode(sortByMaxima(scale(scale(asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.*.*.*), 0.01), 112)), 4, 5, 6)",
+          "textEditor": false
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Log Cost Per App",
+      "transparent": false,
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    }
+  ],
+  "schemaVersion": 16,
+  "style": "dark",
+  "tags": [
+    "Logging"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Log Cost (PoC)",
+  "uid": "njGeyH0mz",
+  "version": 14
+}
