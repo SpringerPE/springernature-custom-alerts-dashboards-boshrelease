@@ -12,6 +12,5 @@ packages: []
 # otherwise they could be overwriten
 templates:
   sn_logstash_overview.json: sn_logstash_overview.json
-  sn_logstash_jvm.json: sn_logstash_jvm.json
 
 properties: {}
