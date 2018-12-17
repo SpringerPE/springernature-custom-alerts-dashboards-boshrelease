@@ -1,0 +1,13 @@
+---
+name: logstash_alerts
+
+packages: []
+
+templates:
+  logstash_cluster.alerts.yml: logstash_cluster.alerts.yml
+
+properties:
+  logstash_alerts.plugin.error.threshold:
+    description: "Set thresehold for plugin failure"
+    default: 1
+

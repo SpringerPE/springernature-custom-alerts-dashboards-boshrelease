@@ -1,0 +1,11 @@
+groups:
+  - name: logstash_cluster
+    rules:
+      - alert: Logstash Plugin failure
+        expr: logstash_node_plugin_failures_total > <%= p("logstash_alerts.plugin.error.threshold") %>
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Plugin {{$labels.plugin}} failed in deployment {{$labels.job}} on instance {{$labels.instance}}"
+          description: "Plugin {{$labels.plugin}} failed in deployment {{$labels.job}} on instance {{$labels.instance}}"
