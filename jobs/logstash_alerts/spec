@@ -9,5 +9,5 @@ templates:
 properties:
   logstash_alerts.plugin.error.threshold:
     description: "Set thresehold for plugin failure"
-    default: 1
+    default: 10000000000
 
