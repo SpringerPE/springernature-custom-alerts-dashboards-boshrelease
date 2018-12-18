@@ -1,0 +1,41 @@
+name: springernature-custom-alerts-dashboards
+version: "14.9"
+commit_hash: eaaa947
+uncommitted_changes: false
+jobs:
+- name: application_logging_dashboards
+  version: 378046798f59dd8149b2310b869f27d5d8170726
+  fingerprint: 378046798f59dd8149b2310b869f27d5d8170726
+  sha1: ecad1f3ba0d72d2c1d69cc2618c7272e54799c56
+- name: cf_app_dashboards
+  version: f5e4652120c06d65ac3fe002041f0fec05f1e7af
+  fingerprint: f5e4652120c06d65ac3fe002041f0fec05f1e7af
+  sha1: de2a1fd95f10db60da2520fc782314c11488fbd2
+- name: cf_platform_dashboards
+  version: 2c77578bcd03ef399c40d5a5dccd75aa55b94da0
+  fingerprint: 2c77578bcd03ef399c40d5a5dccd75aa55b94da0
+  sha1: 337692242bfa92de1e6a80841b741f5627a3de62
+- name: cloudsql_dashboards
+  version: 588a8da18c41cb8bcf77a271b73a817ee1a8cabf
+  fingerprint: 588a8da18c41cb8bcf77a271b73a817ee1a8cabf
+  sha1: 52890a63f2396e8592d51ece9fe0f863540203a6
+- name: logstash_alerts
+  version: 1c470e6674e3c605770c65ff34b46b0580555f1a
+  fingerprint: 1c470e6674e3c605770c65ff34b46b0580555f1a
+  sha1: f2c64e484ae4d8d47c9ce1b292a914a64cf6a1ec
+- name: logstash_dashboards
+  version: 8ac4e792f97e4508148632b52d75fb080fe7bb04
+  fingerprint: 8ac4e792f97e4508148632b52d75fb080fe7bb04
+  sha1: f61e97cc3f1c5be81bb757e43ecded7a5ce4029b
+- name: mysql_cluster_dashboards
+  version: 00c55c526a0ddecd300c6ebb30bce7c40af61451
+  fingerprint: 00c55c526a0ddecd300c6ebb30bce7c40af61451
+  sha1: b59edecf1496d4eec08b265ea45b081d6b7f5bb4
+- name: rabbitmq_cluster_dashboards
+  version: 06f0230a0cf4b4cbf1f00141fa48a6d7a79c4ed1
+  fingerprint: 06f0230a0cf4b4cbf1f00141fa48a6d7a79c4ed1
+  sha1: 0876689abc7d937a349bdc3eb08dc1929de83c82
+license:
+  version: dd2876e08d0816dd876506d44442c2e814724a1d
+  fingerprint: dd2876e08d0816dd876506d44442c2e814724a1d
+  sha1: de1be3084b75ec4a50300a50668b3f41da3538af
