@@ -8,8 +8,8 @@ groups:
           service: logstash
           severity: warning
         annotations:
-          summary: "Plugin {{$labels.plugin}} failed in deployment {{$labels.job}} on instance {{$labels.instance}}"
-          description: "Plugin {{$labels.plugin}} failed in deployment {{$labels.job}} on instance {{$labels.instance}}"
+          summary: "Plugin `{{$labels.plugin}}` failed in deployment `{{$labels.job}}` on instance `{{$labels.instance}}` "
+          description: "Plugin `{{$labels.plugin}}` failed in deployment `{{$labels.job}}` on instance `{{$labels.instance}}` "
 
       - alert: LogsDropped
         expr: rate(logstash_node_pipeline_events_out_total[5m]) - rate(logstash_node_pipeline_events_in_total[5m]) <= bool -1
@@ -18,5 +18,15 @@ groups:
           service: logstash
           severity: critical
         annotations:
-          summary: "Logs are dropping on instance `{{$labels.instance}}` in deployment {{$labels.job}} "
-          description: "Logs are dropping on instance `{{$labels.instance}}` in deployment {{$labels.job}} "
+          summary: "Logs are dropping on instance `{{$labels.instance}}` in deployment `{{$labels.job}}` "
+          description: "Logs are dropping on instance `{{$labels.instance}}` in deployment `{{$labels.job}}` "
+
+      - alert: LogsNotRecieved
+        expr: rate(logstash_node_pipeline_events_in_total{job="logstash-snpaas-platformlog"}[5m]) <= 1
+        for: 5m
+        labels:
+          service: logstash
+          severity: warning
+        annotations:
+          summary: "Instance `{{$labels.instance}}` is hardly recieving any log in deployment ``{$labels.job}}` "
+          description: "Instance `{{$labels.instance}}` is hardly recieving any log in deployment `{{$labels.job}}`"
