@@ -22,7 +22,7 @@ groups:
           description: "Logs are dropping on instance `{{$labels.instance}}` in deployment `{{$labels.job}}` "
 
       - alert: LogsNotRecieved
-        expr: rate(logstash_node_pipeline_events_in_total{job="logstash-snpaas-platformlog"}[5m]) <= 1
+        expr: rate(logstash_node_pipeline_events_in_total[5m]) <= 1
         for: 5m
         labels:
           service: logstash
