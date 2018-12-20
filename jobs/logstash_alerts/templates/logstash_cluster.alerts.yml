@@ -22,11 +22,11 @@ groups:
           description: "Logs are dropping on instance `{{$labels.instance}}` in deployment `{{$labels.job}}` "
 
       - alert: LogsNotRecieved
-        expr: rate(logstash_node_pipeline_events_in_total[5m]) <= 1
+        expr: sum(rate(logstash_node_pipeline_events_in_total[5m])) by (job) < 1
         for: 5m
         labels:
           service: logstash
           severity: warning
         annotations:
-          summary: "Instance `{{$labels.instance}}` is hardly recieving any log in deployment ``{$labels.job}}` "
-          description: "Instance `{{$labels.instance}}` is hardly recieving any log in deployment `{{$labels.job}}`"
+          summary: "Deployment `{{$labels.job}}` is hardly recieving any log"
+          description: "Deployment `{{$labels.job}}` is hardly recieving any log"
