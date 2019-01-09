@@ -6,4 +6,5 @@ packages: []
 templates:
   elastic_cluster.alerts.yml: elastic_cluster.alerts.yml
 
+# need to add some variables
 properties: {}
