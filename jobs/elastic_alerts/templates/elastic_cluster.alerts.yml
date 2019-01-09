@@ -1,0 +1,12 @@
+groups:
+  - name: elastic_cluster
+    rules:
+      - alert: DiskSize
+        expr: 1-(elasticsearch_filesystem_data_available_bytes/elasticsearch_filesystem_data_size_bytes) > <%= p("elastic_alerts.disk_usage.threshold") %>
+        for: 5m
+        labels:
+          service: elastic
+          severity: critical
+        annotations:
+          summary: "In deployment `{{$labels.job}}` disk usage on instance `{{$labels.instance}}` is high, consider scaling up the cluster"
+          description: "In deployment `{{$labels.job}}` disk usage on instance `{{$labels.instance}}` is high, consider scaling up the cluster"
