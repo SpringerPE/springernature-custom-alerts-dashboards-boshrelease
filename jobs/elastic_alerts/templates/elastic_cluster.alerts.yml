@@ -2,7 +2,7 @@ groups:
   - name: elastic_cluster
     rules:
       - alert: DiskSize
-        expr: 1-(elasticsearch_filesystem_data_available_bytes/elasticsearch_filesystem_data_size_bytes) > .6
+        expr: 1-(elasticsearch_filesystem_data_available_bytes/elasticsearch_filesystem_data_size_bytes) > .8
         for: 1m
         labels:
           service: elastic
