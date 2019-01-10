@@ -21,4 +21,4 @@ properties:
 						  annotations:
 						    summary: "In deployment `{{$labels.job}}` disk usage on instance high, consider scaling up the cluster"
 						    description: "In deployment `{{$labels.job}}` disk usage on instance `{{$labels.instance}}` is high, consider scaling up the cluster"
-	    description: 'The prometheus queries'
+		description: 'The prometheus queries'
