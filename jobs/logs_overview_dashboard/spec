@@ -1,5 +1,5 @@
 ---
-name: application_logging_dashboards
+name: logs_overview_dashboards
 
 description: |
   This job was created to be deployed next to grafana job from prometheus-boshrelease
@@ -14,5 +14,6 @@ packages: []
 templates:
   app_log_cost.json: app_log_cost.json
   app_logging_stats.json: app_logging_stats.json
+  app_throttling_stat.json: app_throttling_stat.json
   
 properties: {}
