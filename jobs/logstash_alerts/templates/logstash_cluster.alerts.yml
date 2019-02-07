@@ -12,7 +12,7 @@ groups:
           description: "Plugin `{{$labels.plugin}}` failed in deployment `{{$labels.job}}` on instance `{{$labels.instance}}` "
 
       - alert: LogsDropped
-        expr: rate(logstash_node_pipeline_events_out_total[5m]) - rate(logstash_node_pipeline_events_in_total[5m]) <=  -1
+        expr: rate(logstash_node_pipeline_events_out_total[5m]) - rate(logstash_node_pipeline_events_in_total[5m]) <=  -1000
         for: 5m
         labels:
           service: logstash
