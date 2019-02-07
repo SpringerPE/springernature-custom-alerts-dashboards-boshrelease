@@ -45,7 +45,6 @@ releases:
 or much better, use an operations file ;-)
 
 
-
 ## Creating a new final release and publishing to GitHub releases:
 
 Run: `./create-final-public-release.sh [version-number]`
