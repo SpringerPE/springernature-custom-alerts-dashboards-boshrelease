@@ -7,36 +7,27 @@ templates:
   vm_bosh.alerts.yml: vm_bosh.alerts.yml
 
 properties:
-  bosh_job:
-    unhealthy.evaluation_time:
-      default: 60m
-    persistent_disk_full:
-      threshold:
-        default: 90
-      evaluation_time:
-        default: 30m
-  bosh:
-    rules:
-      description: "Multi-line string to configure Prometheus alerting rules based on bosh_exporter metrics"
-      default: |
-        groups:
-          - name: bosh-custom
-            rules:
-            - alert: BOSHJobUnhealthy
-              expr: max(bosh_job_healthy{bosh_job_name!~"^compilation.*",bosh_deployment!="bosh-health-check"}) by(environment, bosh_name, bosh_deployment, bosh_job_name, bosh_job_index) < 1
-              for: <%= p('bosh_job.unhealthy.evaluation_time') %>
-              labels:
-                category: bosh-custom
-                severity: warning
-              annotations:
-                summary: "BOSH Job `{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is unhealthy for a long time"
-                description: "BOSH Job `{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is being reported unhealthy for a long time"
-            - alert: BOSHJobPersistentDiskFull
-              expr: avg(bosh_job_persistent_disk_percent{bosh_job_name!~"^compilation.*",bosh_deployment!="bosh-health-check"}) by(environment, bosh_name, bosh_deployment, bosh_job_name, bosh_job_index) > <%= p('bosh_job.persistent_disk_full.threshold') %>
-              for: <%= p('bosh_job.persistent_disk_full.evaluation_time') %>
-              labels:
-                category: bosh-custom
-                severity: critical
-              annotations:
-                summary: "BOSH Job `{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is running out of persistent disk"
-                description: "BOSH Job `{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` has used more than <%= p('bosh_job.persistent_disk_full.threshold') %>% of its persistent disk for <%= p('bosh_job.persistent_disk_full.evaluation_time') %>: {{$value}}%"
+  bosh_job.prometheus_rules:
+    description: "Multi-line string to configure Prometheus alerting rules based on bosh_exporter metrics"
+    default: |
+      groups:
+        - name: bosh-custom
+          rules:
+          - alert: BOSHJobUnhealthy
+            expr: max(bosh_job_healthy{bosh_job_name!~"^compilation.*",bosh_deployment!="bosh-health-check"}) by(environment, bosh_name, bosh_deployment, bosh_job_name, bosh_job_index) < 1
+            for: 60m
+            labels:
+              category: bosh-custom
+              severity: warning
+            annotations:
+              summary: "BOSH Job `{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is unhealthy for a long time"
+              description: "BOSH Job `{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is being reported unhealthy for a long time"
+          - alert: BOSHJobPersistentDiskFull
+            expr: avg(bosh_job_persistent_disk_percent{bosh_job_name!~"^compilation.*",bosh_deployment!="bosh-health-check"}) by(environment, bosh_name, bosh_deployment, bosh_job_name, bosh_job_index) > 90
+            for: 30m
+            labels:
+              category: bosh-custom
+              severity: critical
+            annotations:
+              summary: "BOSH Job `{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is running out of persistent disk"
+              description: "BOSH Job `{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` has used more than 90% of its persistent disk for 30m: {{$value}}%"
