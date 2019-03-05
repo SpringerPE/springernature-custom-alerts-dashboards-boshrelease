@@ -1,0 +1,49 @@
+name: springernature-custom-alerts-dashboards
+version: "14.23"
+commit_hash: 9e66b5e
+uncommitted_changes: true
+jobs:
+- name: cf_app_dashboards
+  version: f5e4652120c06d65ac3fe002041f0fec05f1e7af
+  fingerprint: f5e4652120c06d65ac3fe002041f0fec05f1e7af
+  sha1: de2a1fd95f10db60da2520fc782314c11488fbd2
+- name: cf_platform_dashboards
+  version: 2c77578bcd03ef399c40d5a5dccd75aa55b94da0
+  fingerprint: 2c77578bcd03ef399c40d5a5dccd75aa55b94da0
+  sha1: 337692242bfa92de1e6a80841b741f5627a3de62
+- name: cloudsql_dashboards
+  version: 588a8da18c41cb8bcf77a271b73a817ee1a8cabf
+  fingerprint: 588a8da18c41cb8bcf77a271b73a817ee1a8cabf
+  sha1: 52890a63f2396e8592d51ece9fe0f863540203a6
+- name: elastic_alerts
+  version: f22eac078af52e9b5ea8e816457398e3e279d38c
+  fingerprint: f22eac078af52e9b5ea8e816457398e3e279d38c
+  sha1: 8f146234fb555c760cdeed3d0500530557caf21e
+- name: logs_overview_dashboards
+  version: fed143935500384157debb8b4f47fd695c1ae0f5
+  fingerprint: fed143935500384157debb8b4f47fd695c1ae0f5
+  sha1: b2ea6b4965dd5971278f95684bc145459bf3dccf
+- name: logstash_alerts
+  version: 73589b92f96fdff2f7555175a57a0e079950f65a
+  fingerprint: 73589b92f96fdff2f7555175a57a0e079950f65a
+  sha1: f29a888fae5023f0a2edf120122d132415b70caf
+- name: logstash_dashboards
+  version: 8ac4e792f97e4508148632b52d75fb080fe7bb04
+  fingerprint: 8ac4e792f97e4508148632b52d75fb080fe7bb04
+  sha1: f61e97cc3f1c5be81bb757e43ecded7a5ce4029b
+- name: mysql_cluster_dashboards
+  version: 00c55c526a0ddecd300c6ebb30bce7c40af61451
+  fingerprint: 00c55c526a0ddecd300c6ebb30bce7c40af61451
+  sha1: b59edecf1496d4eec08b265ea45b081d6b7f5bb4
+- name: rabbitmq_cluster_dashboards
+  version: 06f0230a0cf4b4cbf1f00141fa48a6d7a79c4ed1
+  fingerprint: 06f0230a0cf4b4cbf1f00141fa48a6d7a79c4ed1
+  sha1: 0876689abc7d937a349bdc3eb08dc1929de83c82
+- name: vm_alerts
+  version: 7210c7e765d6bade1bfbc0b572bb2368fbfdfc1d
+  fingerprint: 7210c7e765d6bade1bfbc0b572bb2368fbfdfc1d
+  sha1: 4d8cb39840af766949d7744eb44fb4500c0fd93c
+license:
+  version: dd2876e08d0816dd876506d44442c2e814724a1d
+  fingerprint: dd2876e08d0816dd876506d44442c2e814724a1d
+  sha1: de1be3084b75ec4a50300a50668b3f41da3538af
