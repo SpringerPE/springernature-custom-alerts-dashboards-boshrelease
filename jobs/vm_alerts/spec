@@ -1,6 +1,9 @@
 ---
 name: vm_alerts
 
+description: |
+  Prometheus custom alerting rules for bosh deployed vms
+
 packages: []
 
 templates:
