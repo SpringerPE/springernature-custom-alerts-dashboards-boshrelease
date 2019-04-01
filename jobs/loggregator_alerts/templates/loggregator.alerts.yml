@@ -1,0 +1,1 @@
+<%= p('bosh_job.prometheus_rules') %>

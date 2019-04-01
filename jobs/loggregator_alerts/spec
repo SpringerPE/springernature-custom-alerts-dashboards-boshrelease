@@ -1,0 +1,27 @@
+---
+name: loggregator_alerts
+
+description: |
+  Prometheus custom alerting rules for loggregator subsystem
+
+packages: []
+
+templates:
+  loggregator.alerts.yml: loggregator.alerts.yml
+
+properties:
+  bosh_job.prometheus_rules:
+    description: "Multi-line string to configure Prometheus alerting rules"
+    default: |
+      groups:
+        - name: loggregator-custom
+          rules:
+          - alert: LoggregatorUnhealthy
+            expr: logmon_gauge_logs_consumed < 1000
+            for: 10m
+            labels:
+              category: loggregator-custom
+              severity: warning
+            annotations:
+              summary: "Loggregator subsystem seems to be unhealthy for a period of 10m, since the consumed logs are {{$value}}, but we expect it to be 1000"
+              description: "Loggregator subsystem seems to be unhealthy for a period of 10m, since the consumed logs are {{$value}}, but we expect it to be 1000"
