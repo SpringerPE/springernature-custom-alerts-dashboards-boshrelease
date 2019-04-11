@@ -1185,8 +1185,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "logstash-onprem-applog",
-          "value": "logstash-onprem-applog"
+          "text": "logstash-applog",
+          "value": "logstash-applog"
         },
         "datasource": "prometheus",
         "hide": 0,

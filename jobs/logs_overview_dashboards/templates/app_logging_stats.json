@@ -60,7 +60,7 @@
           "intervalFactor": 1,
           "refCount": 0,
           "refId": "A",
-          "target": "aliasByNode(aliasSub(sumSeries(perSecond(stats.gauges.logstash-onprem.api_snpass_eu.*)), 'logstash-onprem', 'ONPREM'), 2)",
+          "target": "aliasByNode(aliasSub(sumSeries(perSecond(stats.gauges.logstash.api_snpass_eu.*)), 'logstash', 'ONPREM'), 2)",
           "textEditor": false
         },
         {
@@ -155,7 +155,7 @@
         {
           "refCount": 0,
           "refId": "B",
-          "target": "aliasByNode(aliasSub(integral(perSecond(sumSeries(stats.gauges.logstash-onprem.api_snpass_eu.*))), 'logstash-onprem', 'ONPREM'), 2)",
+          "target": "aliasByNode(aliasSub(integral(perSecond(sumSeries(stats.gauges.logstash.api_snpass_eu.*))), 'logstash', 'ONPREM'), 2)",
           "textEditor": false
         }
       ],
@@ -241,7 +241,7 @@
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
-          "target": "aliasByNode(integral(perSecond(sortByMaxima(stats.gauges.logstash-onprem.api_snpass_eu.*))), 4)",
+          "target": "aliasByNode(integral(perSecond(sortByMaxima(stats.gauges.logstash.api_snpass_eu.*))), 4)",
           "textEditor": false
         }
       ],
@@ -328,7 +328,7 @@
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
-          "target": "aliasByNode(integral(perSecond(sortByMaxima(stats.gauges.logstash-onprem.api_snpass_eu.*.*))), 4, 5)",
+          "target": "aliasByNode(integral(perSecond(sortByMaxima(stats.gauges.logstash.api_snpass_eu.*.*))), 4, 5)",
           "textEditor": false
         }
       ],
@@ -377,7 +377,7 @@
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
-          "target": "aliasByNode(highestMax(currentAbove(integral(perSecond(sortByMaxima(stats.gauges.logstash-onprem.api_snpass_eu.*.*.*))), 1), 10), 4, 5, 6)",
+          "target": "aliasByNode(highestMax(currentAbove(integral(perSecond(sortByMaxima(stats.gauges.logstash.api_snpass_eu.*.*.*))), 1), 10), 4, 5, 6)",
           "textEditor": false
         }
       ],

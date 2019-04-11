@@ -60,14 +60,14 @@
           "refCount": 1,
           "refId": "A",
           "target": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*))), #B), 0.01), $CostThisMonth)), 'elk-logstash', 'SNPAAS'), 2)",
-          "targetFull": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))), 0.01), $CostThisMonth)), 'elk-logstash', 'SNPAAS'), 2)",
+          "targetFull": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth)), 'elk-logstash', 'SNPAAS'), 2)",
           "textEditor": true
         },
         {
           "hide": true,
           "refCount": 0,
           "refId": "B",
-          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))",
+          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))",
           "textEditor": true
         },
         {
@@ -78,8 +78,8 @@
           "intervalFactor": 1,
           "refCount": 0,
           "refId": "C",
-          "target": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash-onprem.*.*))), #B), 0.01), $CostThisMonth)), 'logstash-onprem', 'ONPREM'), 2)",
-          "targetFull": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash-onprem.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))), 0.01), $CostThisMonth)), 'logstash-onprem', 'ONPREM'), 2)",
+          "target": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*))), #B), 0.01), $CostThisMonth)), 'logstash', 'ONPREM'), 2)",
+          "targetFull": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth)), 'logstash', 'ONPREM'), 2)",
           "textEditor": true
         }
       ],
@@ -130,15 +130,15 @@
           "intervalFactor": 1,
           "refCount": 0,
           "refId": "A",
-          "target": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash-onprem.*.*))), #B), 0.01), $CostThisMonth), 4, 5)",
-          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash-onprem.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
+          "target": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*))), #B), 0.01), $CostThisMonth), 4, 5)",
+          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
           "textEditor": true
         },
         {
           "hide": true,
           "refCount": -1,
           "refId": "B",
-          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))",
+          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))",
           "textEditor": true
         }
       ],
@@ -190,14 +190,14 @@
           "refCount": 0,
           "refId": "A",
           "target": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*))), #B), 0.01), $CostThisMonth), 4, 5)",
-          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
+          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
           "textEditor": true
         },
         {
           "hide": true,
           "refCount": -1,
           "refId": "B",
-          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))",
+          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))",
           "textEditor": true
         }
       ],
@@ -248,15 +248,15 @@
           "intervalFactor": 1,
           "refCount": 0,
           "refId": "A",
-          "target": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash-onprem.*.*.*))), #B), 0.01), $CostThisMonth), 4, 5)",
-          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash-onprem.*.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
+          "target": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*.*))), #B), 0.01), $CostThisMonth), 4, 5)",
+          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
           "textEditor": true
         },
         {
           "hide": true,
           "refCount": -1,
           "refId": "B",
-          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))",
+          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))",
           "textEditor": true
         }
       ],
@@ -308,14 +308,14 @@
           "refCount": 0,
           "refId": "A",
           "target": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*.*))), #B), 0.01), $CostThisMonth), 4, 5)",
-          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
+          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
           "textEditor": true
         },
         {
           "hide": true,
           "refCount": 1,
           "refId": "B",
-          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash-onprem}.api_snpass_eu.*)))",
+          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))",
           "textEditor": true
         }
       ],

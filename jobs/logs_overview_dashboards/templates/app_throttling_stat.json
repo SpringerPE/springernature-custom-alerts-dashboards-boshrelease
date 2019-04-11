@@ -58,7 +58,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "aliasByNode(aliasSub(perSecond(stats.gauges.logstash-onprem.api_snpass_eu.throttled.*.*.*.exceed_limit), 'logstash-onprem', 'Limit_Exceeded'), 2)",
+          "expr": "aliasByNode(aliasSub(perSecond(stats.gauges.logstash.api_snpass_eu.throttled.*.*.*.exceed_limit), 'logstash', 'Limit_Exceeded'), 2)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
@@ -146,11 +146,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "aliasByNode(aliasSub(perSecond(stats.gauges.logstash-onprem.api_snpass_eu.throttled.*.*.*.exceed_limit), 'logstash-onprem', 'Limit_Exceeded'), 2)",
+          "expr": "aliasByNode(aliasSub(perSecond(stats.gauges.logstash.api_snpass_eu.throttled.*.*.*.exceed_limit), 'logstash', 'Limit_Exceeded'), 2)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
-          "target": "aliasByNode(perSecond(stats.gauges.logstash-onprem.api_snpass_eu.throttled.*.*.*.same_message), 7, 6, 5)",
+          "target": "aliasByNode(perSecond(stats.gauges.logstash.api_snpass_eu.throttled.*.*.*.same_message), 7, 6, 5)",
           "textEditor": false
         }
       ],
@@ -234,11 +234,11 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "aliasByNode(aliasSub(perSecond(stats.gauges.logstash-onprem.api_snpass_eu.throttled.*.*.*.exceed_limit), 'logstash-onprem', 'Limit_Exceeded'), 2)",
+          "expr": "aliasByNode(aliasSub(perSecond(stats.gauges.logstash.api_snpass_eu.throttled.*.*.*.exceed_limit), 'logstash', 'Limit_Exceeded'), 2)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
-          "target": "aliasByNode(perSecond(stats.gauges.logstash-onprem.api_snpass_eu.throttled.*.*.*.exceed_limit), 7, 6, 5)",
+          "target": "aliasByNode(perSecond(stats.gauges.logstash.api_snpass_eu.throttled.*.*.*.exceed_limit), 7, 6, 5)",
           "textEditor": false
         }
       ],
@@ -322,7 +322,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "aliasByNode(aliasSub(perSecond(stats.gauges.logstash-onprem.api_snpass_eu.throttled.*.*.*.exceed_limit), 'logstash-onprem', 'Limit_Exceeded'), 2)",
+          "expr": "aliasByNode(aliasSub(perSecond(stats.gauges.logstash.api_snpass_eu.throttled.*.*.*.exceed_limit), 'logstash', 'Limit_Exceeded'), 2)",
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
@@ -405,7 +405,7 @@
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
-          "target": "aliasByNode(currentAbove(sortByMaxima(integral(perSecond(stats.gauges.logstash-onprem.api_snpass_eu.throttled.*.*.*.same_message))), 1), 7)",
+          "target": "aliasByNode(currentAbove(sortByMaxima(integral(perSecond(stats.gauges.logstash.api_snpass_eu.throttled.*.*.*.same_message))), 1), 7)",
           "textEditor": false
         }
       ],
@@ -493,7 +493,7 @@
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
-          "target": "aliasByNode(currentAbove(sortByMaxima(integral(perSecond(stats.gauges.logstash-onprem.api_snpass_eu.throttled.*.*.*.exceed_limit))), 1), 7)",
+          "target": "aliasByNode(currentAbove(sortByMaxima(integral(perSecond(stats.gauges.logstash.api_snpass_eu.throttled.*.*.*.exceed_limit))), 1), 7)",
           "textEditor": false
         }
       ],
@@ -581,7 +581,7 @@
           "format": "time_series",
           "intervalFactor": 1,
           "refId": "A",
-          "target": "aliasByNode(sortByMaxima(integral(perSecond(highestMax(stats.gauges.logstash-onprem.api_snpass_eu.throttled.*.*.*.{exceed_limit,same_message}, 5)))), 7, 6, 5)",
+          "target": "aliasByNode(sortByMaxima(integral(perSecond(highestMax(stats.gauges.logstash.api_snpass_eu.throttled.*.*.*.{exceed_limit,same_message}, 5)))), 7, 6, 5)",
           "textEditor": false
         }
       ],
