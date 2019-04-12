@@ -5,6 +5,8 @@ builds:
     version: "14.18"
   0bc5ffd3-deca-4d63-4f20-9db7cb71d626:
     version: "14.5"
+  0eaadc65-2189-48c1-4d1e-b4babd18dde4:
+    version: "14.25"
   1303a604-d1ca-4001-568d-3c004ed77aaa:
     version: "12"
   14c3b3ea-d6a5-47bc-aa54-7c5d6915f770:
