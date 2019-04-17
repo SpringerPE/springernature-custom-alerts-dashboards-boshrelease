@@ -16,80 +16,9 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 99,
-  "iteration": 1548410385416,
+  "iteration": 1555490786799,
   "links": [],
   "panels": [
-    {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
-      "datasource": "Graphite-telemetry",
-      "fontSize": "80%",
-      "format": "currencyUSD",
-      "gridPos": {
-        "h": 11,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "hideTimeOverride": false,
-      "id": 12,
-      "interval": null,
-      "legend": {
-        "show": true,
-        "sortDesc": true,
-        "values": true
-      },
-      "legendType": "Under graph",
-      "links": [],
-      "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "pieType": "pie",
-      "strokeWidth": "1",
-      "targets": [
-        {
-          "expr": "asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.engineering_enablement,stats.gauges.syslog-app-drain.api_snpaas_eu.*,0)",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "intervalFactor": 1,
-          "refCount": 1,
-          "refId": "A",
-          "target": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*))), #B), 0.01), $CostThisMonth)), 'elk-logstash', 'SNPAAS'), 2)",
-          "targetFull": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth)), 'elk-logstash', 'SNPAAS'), 2)",
-          "textEditor": true
-        },
-        {
-          "hide": true,
-          "refCount": 0,
-          "refId": "B",
-          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))",
-          "textEditor": true
-        },
-        {
-          "expr": "asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.engineering_enablement,stats.gauges.syslog-app-drain.api_snpaas_eu.*,0)",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "intervalFactor": 1,
-          "refCount": 0,
-          "refId": "C",
-          "target": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*))), #B), 0.01), $CostThisMonth)), 'logstash', 'ONPREM'), 2)",
-          "targetFull": "aliasByNode(aliasSub(sumSeries(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth)), 'logstash', 'ONPREM'), 2)",
-          "textEditor": true
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Cost SNPAAS vs ONPREM",
-      "transparent": false,
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
-    },
     {
       "aliasColors": {},
       "breakPoint": "50%",
@@ -105,7 +34,7 @@
         "h": 12,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 0
       },
       "hideTimeOverride": false,
       "id": 11,
@@ -131,20 +60,20 @@
           "refCount": 0,
           "refId": "A",
           "target": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*))), #B), 0.01), $CostThisMonth), 4, 5)",
-          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
+          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
           "textEditor": true
         },
         {
           "hide": true,
           "refCount": -1,
           "refId": "B",
-          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))",
+          "target": "integral(perSecond(sumSeries(stats.gauges.{logstash}.api_snpass_eu.*)))",
           "textEditor": true
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Cost Per ORG(ONPREM)",
+      "title": "Cost Per ORG",
       "transparent": false,
       "type": "grafana-piechart-panel",
       "valueName": "current"
@@ -164,66 +93,7 @@
         "h": 12,
         "w": 12,
         "x": 12,
-        "y": 11
-      },
-      "hideTimeOverride": false,
-      "id": 14,
-      "interval": null,
-      "legend": {
-        "show": true,
-        "sortDesc": true,
-        "values": true
-      },
-      "legendType": "Under graph",
-      "links": [],
-      "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "pieType": "pie",
-      "strokeWidth": "1",
-      "targets": [
-        {
-          "expr": "asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.engineering_enablement,stats.gauges.syslog-app-drain.api_snpaas_eu.*,0)",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "intervalFactor": 1,
-          "refCount": 0,
-          "refId": "A",
-          "target": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*))), #B), 0.01), $CostThisMonth), 4, 5)",
-          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
-          "textEditor": true
-        },
-        {
-          "hide": true,
-          "refCount": -1,
-          "refId": "B",
-          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))",
-          "textEditor": true
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Cost Per ORG(SNPAAS)",
-      "transparent": false,
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
-      "datasource": "Graphite-telemetry",
-      "fontSize": "80%",
-      "format": "currencyUSD",
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 0,
-        "y": 23
+        "y": 0
       },
       "hideTimeOverride": false,
       "id": 13,
@@ -249,79 +119,20 @@
           "refCount": 0,
           "refId": "A",
           "target": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*.*))), #B), 0.01), $CostThisMonth), 4, 5)",
-          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
+          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.logstash.*.*.*))), integral(perSecond(sumSeries(stats.gauges.{logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
           "textEditor": true
         },
         {
           "hide": true,
           "refCount": -1,
           "refId": "B",
-          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))",
+          "target": "integral(perSecond(sumSeries(stats.gauges.{logstash}.api_snpass_eu.*)))",
           "textEditor": true
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Cost Per Space(ONPREM)",
-      "transparent": false,
-      "type": "grafana-piechart-panel",
-      "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "breakPoint": "50%",
-      "cacheTimeout": null,
-      "combine": {
-        "label": "Others",
-        "threshold": 0
-      },
-      "datasource": "Graphite-telemetry",
-      "fontSize": "80%",
-      "format": "currencyUSD",
-      "gridPos": {
-        "h": 12,
-        "w": 12,
-        "x": 12,
-        "y": 23
-      },
-      "hideTimeOverride": false,
-      "id": 10,
-      "interval": null,
-      "legend": {
-        "show": true,
-        "sortDesc": true,
-        "values": true
-      },
-      "legendType": "Under graph",
-      "links": [],
-      "maxDataPoints": 3,
-      "nullPointMode": "connected",
-      "pieType": "pie",
-      "strokeWidth": "1",
-      "targets": [
-        {
-          "expr": "asPercent(stats.gauges.syslog-app-drain.api_snpaas_eu.engineering_enablement,stats.gauges.syslog-app-drain.api_snpaas_eu.*,0)",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "intervalFactor": 1,
-          "refCount": 0,
-          "refId": "A",
-          "target": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*.*))), #B), 0.01), $CostThisMonth), 4, 5)",
-          "targetFull": "aliasByNode(scale(scale(asPercent(sortByMaxima(integral(perSecond(stats.gauges.elk-logstash.*.*.*))), integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))), 0.01), $CostThisMonth), 4, 5)",
-          "textEditor": true
-        },
-        {
-          "hide": true,
-          "refCount": 1,
-          "refId": "B",
-          "target": "integral(perSecond(sumSeries(stats.gauges.{elk-logstash,logstash}.api_snpass_eu.*)))",
-          "textEditor": true
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Cost Per Space(SNPAAS)",
+      "title": "Cost Per Space",
       "transparent": false,
       "type": "grafana-piechart-panel",
       "valueName": "current"
@@ -37886,5 +37697,5 @@
   "timezone": "",
   "title": "Log Cost (PoC)",
   "uid": "njGeyH0mz",
-  "version": 75
+  "version": 78
 }
