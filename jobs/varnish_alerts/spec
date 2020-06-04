@@ -1,0 +1,24 @@
+---
+name: varnish_alerts
+
+packages: []
+
+templates:
+  varnish.alerts.yml: varnish.alerts.yml
+
+properties: 
+ varnish_alerts:
+  default: |
+   groups:
+    - name: varnish
+      rules:
+       - alert: BackendFailures
+         expr: max by(instance) (varnish_main_backend_fail) > 0
+         for: 1m
+         labels:
+          service: varnish
+          severity: critical
+         annotations:
+          summary: "Deployment `{{$labels.job}}` `{{$labels.instance}}` is reporting backend failures"
+          description: "Deployment `{{$labels.job}}` `{{$labels.instance}}` is reporting backend failures, please check varnish and the gorouters and the load balancer"
+  description: 'The varnish alerts'
