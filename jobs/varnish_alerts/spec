@@ -12,7 +12,7 @@ properties:
    groups:
     - name: varnish
       rules:
-       - alert: BackendFailures
+       - alert: VarnishBackendFailures
          expr: max by(instance) (varnish_main_backend_fail) > 0
          for: 1m
          labels:
