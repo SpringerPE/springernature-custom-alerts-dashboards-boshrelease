@@ -13,7 +13,7 @@ properties:
     - name: varnish
       rules:
        - alert: VarnishBackendFailures
-         expr: max by(instance) (varnish_main_backend_fail) > 0
+         expr: increase(varnish_main_backend_fail[5m]) > 0
          for: 1m
          labels:
           service: varnish
