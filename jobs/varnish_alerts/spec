@@ -20,5 +20,5 @@ properties:
           severity: critical
          annotations:
           summary: "Deployment `{{$labels.job}}` `{{$labels.instance}}` is reporting backend failures"
-          description: "Deployment `{{$labels.job}}` `{{$labels.instance}}` is reporting backend failures, please check varnish and the gorouters and the load balancer"
+          description: "Deployment `{{$labels.job}}` `{{$labels.instance}}` is reporting backend failures. Please check varnish, gorouters and the load balancers"
   description: 'The varnish alerts'
