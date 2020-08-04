@@ -138,7 +138,7 @@ releaseid=$($CURL -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: appl
 # Upload the release
 echo "* Uploading tarball to Github releases section ... "
 echo -n "  URL: "
-$CURL -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"/tmp/$RELEASE-$$.tgz" "https://uploads.github.com/repos/$GITHUB_REPO/releases/$releaseid/assets?name=$RELEASE-$version.tgz" | $JQ -r '.browser_download_url'
+$CURL -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @"/tmp/$RELEASE-$$.tgz" "https://uploads.github.com/repos/$GITHUB_REPO/releases/$releaseid/assets?name=$RELEASE.tgz" | $JQ -r '.browser_download_url'
 
 # Delete the release
 rm -f "/tmp/$RELEASE-$$.tgz"
