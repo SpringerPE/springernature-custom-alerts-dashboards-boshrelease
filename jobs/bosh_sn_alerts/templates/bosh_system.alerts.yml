@@ -25,7 +25,7 @@ groups:
 
 # CPU USAGE: (100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 30) * on(instance) group_right label_replace(bosh_job_healthy, "instance", "$1:9100", "bosh_job_ip", "(.*)")
       - alert: SNBoshJobSystemHighCPUUsage
-        expr: (100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > <%= p('bosh_alerts.bosh_alerts.job_high_cpu_usage.threshold') %>) * on(instance) group_right label_replace(bosh_job_healthy{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.job_high_cpu_usage.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^compilation.*"}, "instance", "$1:9100", "bosh_job_ip", "(.*)")
+        expr: (100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > <%= p('bosh_alerts.job_high_cpu_usage.threshold') %>) * on(instance) group_right label_replace(bosh_job_healthy{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.job_high_cpu_usage.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^compilation.*"}, "instance", "$1:9100", "bosh_job_ip", "(.*)")
         for: <%= p('bosh_alerts.job_high_cpu_usage.evaluation_time') %>
         labels:
           owner: sn
