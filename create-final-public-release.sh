@@ -127,9 +127,18 @@ $git_changes
 
     releases:
     - name: $RELEASE
-      url: https://github.com/${GITHUB_REPO}/releases/download/v${version}/${RELEASE}-${version}.tgz
+      url: https://github.com/${GITHUB_REPO}/releases/download/v${version}/${RELEASE}.tgz
       version: $version
       sha1: $sha1
+
+or to always point to latest release:
+
+    releases:
+    - name: $RELEASE
+      url: https://github.com/${GITHUB_REPO}/releases/latest/download/${RELEASE}.tgz
+      version: latest
+
+
 EOF
 )
 printf -v DATA '{"tag_name": "v%s","target_commitish": "master","name": "v%s","body": %s,"draft": false, "prerelease": false}' "$version" "$version" "$(echo "$description" | $JQ -R -s '@text')"
