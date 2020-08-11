@@ -1,0 +1,24 @@
+groups:
+  - name: bosh-jobs-sn
+    rules:
+      - alert: SNBoshJobUnhealthy
+        expr: max(bosh_job_healthy{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.job_unhealthy.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^compilation.*"}) by(environment, bosh_name, bosh_deployment, bosh_job_name, bosh_job_index) < 1
+        for: <%= p('bosh_alerts.job_unhealthy.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job
+          severity: warning
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is unhealthy"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is being reported unhealthy"
+
+      - alert: SNBoshJobExtendedUnhealthy
+        expr: max(bosh_job_healthy{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.job_unhealthy.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^compilation.*"}) by(environment, bosh_name, bosh_deployment, bosh_job_name, bosh_job_index) < 1
+        for: <%= p('bosh_alerts.job_extended_unhealthy.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job
+          severity: critical
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` has been unhealthy for a long time"
+          description: "BOSH job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` has been reported unhealthy for more than <%= p('bosh_alerts.job_extended_unhealthy.evaluation_time') %>"

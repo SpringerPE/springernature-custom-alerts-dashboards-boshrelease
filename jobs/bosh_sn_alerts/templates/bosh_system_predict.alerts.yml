@@ -1,0 +1,35 @@
+groups:
+  - name: bosh-system-predict-sn
+    rules:
+      - alert: SNBoshJobSystemDiskPredictWillFill
+        expr: predict_linear(bosh_job_system_disk_percent{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.disk_predict.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^(compilation|smoke-tests).*"}[1h], <%= p('bosh_alerts.job_predict_system_disk_full.predict_time') %>) > <%= p('bosh_alerts.job_predict_system_disk_full.threshold') %>
+        for: <%= p('bosh_alerts.job_predict_system_disk_full.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job
+          severity: warning
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` will run out of system disk in {{humanizeDuration <%= p('bosh_alerts.job_predict_system_disk_full.predict_time') %>}}"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` system disk will be used more than <%= p('bosh_alerts.job_predict_system_disk_full.threshold') %>% in {{humanizeDuration <%= p('bosh_alerts.job_predict_system_disk_full.predict_time') %>}}"
+
+      - alert: SNBoshJobEphemeralDiskPredictWillFill
+        expr: predict_linear(bosh_job_ephemeral_disk_percent{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.disk_predict.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^(compilation|smoke-tests).*"}[1h], <%= p('bosh_alerts.job_predict_ephemeral_disk_full.predict_time') %>) > <%= p('bosh_alerts.job_predict_ephemeral_disk_full.threshold') %>
+        for: <%= p('bosh_alerts.job_predict_ephemeral_disk_full.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job
+          severity: warning
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` will run out of ephemeral disk in {{humanizeDuration <%= p('bosh_alerts.job_predict_ephemeral_disk_full.predict_time') %>}}"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` ephemeral disk will be used more than <%= p('bosh_alerts.job_predict_ephemeral_disk_full.threshold') %>% in {{humanizeDuration <%= p('bosh_alerts.job_predict_ephemeral_disk_full.predict_time') %>}}"
+
+      - alert: SNBoshJobPersistentDiskPredictWillFill
+        expr: predict_linear(bosh_job_persistent_disk_percent{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.disk_predict.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^(compilation|smoke-tests).*"}[1h], <%= p('bosh_alerts.job_predict_persistent_disk_full.predict_time') %>) > <%= p('bosh_alerts.job_predict_persistent_disk_full.threshold') %>
+        for: <%= p('bosh_alerts.job_predict_persistent_disk_full.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job
+          severity: warning
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` will run out of persistent disk in {{humanizeDuration <%= p('bosh_alerts.job_predict_persistent_disk_full.predict_time') %>}}"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` persistent disk will be used more than <%= p('bosh_alerts.job_predict_persistent_disk_full.threshold') %>% in {{humanizeDuration <%= p('bosh_alerts.job_predict_persistent_disk_full.predict_time') %>}}"

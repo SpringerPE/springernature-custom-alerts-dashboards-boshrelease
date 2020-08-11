@@ -1,0 +1,92 @@
+groups:
+  - name: bosh-system-sn
+    rules:
+      - alert: SNBoshJobSystemHighCPULoad
+        expr: (max(node_load5) by (instance) > (count by (instance)(node_cpu_seconds_total{mode="idle"}))) * on(instance) group_right label_replace(bosh_job_healthy{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.job_high_cpu_load.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^compilation.*"}, "instance", "$1:9100", "bosh_job_ip", "(.*)")
+        for: <%= p('bosh_alerts.job_high_cpu_load.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job-system
+          severity: warning
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is reporting a high CPU load average"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` had a CPU load average (5m) above {{$value}} for <%= p('bosh_alerts.job_high_cpu_load.evaluation_time') %>"
+
+      - alert: SNBoshJobSystemLowFreeRAM
+        expr: (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < <%= p('bosh_alerts.job_low_free_ram.threshold') %>) * on(instance) group_right label_replace(bosh_job_healthy{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.job_low_free_ram.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^compilation.*"}, "instance", "$1:9100", "bosh_job_ip", "(.*)")
+        for: <%= p('bosh_alerts.job_low_free_ram.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job-system
+          severity: warning
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is reporting low free RAM"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` has less free memory than <%= p('bosh_alerts.job_low_free_ram.threshold') %>% for <%= p('bosh_alerts.job_low_free_ram.evaluation_time') %>"
+
+# CPU USAGE: (100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 30) * on(instance) group_right label_replace(bosh_job_healthy, "instance", "$1:9100", "bosh_job_ip", "(.*)")
+      - alert: SNBoshJobSystemHighCPUUsage
+        expr: (100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > <%= p('bosh_alerts.bosh_alerts.job_high_cpu_usage.threshold') %>) * on(instance) group_right label_replace(bosh_job_healthy{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.job_high_cpu_usage.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^compilation.*"}, "instance", "$1:9100", "bosh_job_ip", "(.*)")
+        for: <%= p('bosh_alerts.job_high_cpu_usage.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job-system
+          severity: warning
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is reporting a high CPU usage"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` had a CPU usage above {{$value}} for <%= p('bosh_alerts.job_high_cpu_usage.evaluation_time') %>"
+
+      - alert: SNBoshJobSwapIsFillingUp
+        expr: ((1 - (node_memory_SwapFree_bytes / node_memory_SwapTotal_bytes)) * 100 > <%= p('bosh_alerts.job_swap.threshold') %>) * on(instance) group_right label_replace(bosh_job_healthy{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.job_swap.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^compilation.*"}, "instance", "$1:9100", "bosh_job_ip", "(.*)")
+        for: <%= p('bosh_alerts.job_swap.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job
+          severity: warning
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is reporting swap usage"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` has used more than <%= p('bosh_alerts.job_swap.threshold') %>% of its swap for <%= p('bosh_alerts.job_swap.evaluation_time') %>"
+
+      - alert: SNBoshJobSystemDiskFull
+        expr: avg(bosh_job_system_disk_percent{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.disk.deployments_ignore') do |ig| %>|<%= ig %><% end %>"}) by(environment, bosh_name, bosh_deployment, bosh_job_name, bosh_job_index) > <%= p('bosh_alerts.job_system_disk_full.threshold') %>
+        for: <%= p('bosh_alerts.job_system_disk_full.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job
+          severity: critical
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is running out of system disk"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` has used more than <%= p('bosh_alerts.job_system_disk_full.threshold') %>% of its system disk for <%= p('bosh_alerts.job_system_disk_full.evaluation_time') %>"
+
+      - alert: SNBoshJobEphemeralDiskFull
+        expr: avg(bosh_job_ephemeral_disk_percent{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.disk.deployments_ignore') do |ig| %>|<%= ig %><% end %>"}) by(environment, bosh_name, bosh_deployment, bosh_job_name, bosh_job_index) > <%= p('bosh_alerts.job_ephemeral_disk_full.threshold') %>
+        for: <%= p('bosh_alerts.job_ephemeral_disk_full.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job
+          severity: critical
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is running out of ephemeral disk"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` has used more than <%= p('bosh_alerts.job_ephemeral_disk_full.threshold') %>% of its ephemeral disk for <%= p('bosh_alerts.job_ephemeral_disk_full.evaluation_time') %>s"
+
+      - alert: SNBoshJobPersistentDiskFull
+        expr: avg(bosh_job_persistent_disk_percent{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.disk.deployments_ignore') do |ig| %>|<%= ig %><% end %>"}) by(environment, bosh_name, bosh_deployment, bosh_job_name, bosh_job_index) > <%= p('bosh_alerts.job_persistent_disk_full.threshold') %>
+        for: <%= p('bosh_alerts.job_persistent_disk_full.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job
+          severity: critical
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is running out of persistent disk"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` has used more than <%= p('bosh_alerts.job_persistent_disk_full.threshold') %>% of its persistent disk for <%= p('bosh_alerts.job_persistent_disk_full.evaluation_time') %>"
+
+      - alert: SNBoshJobPersistentDiskInodesExhausted
+        expr: avg(bosh_job_persistent_disk_inode_percent{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.disk.deployments_ignore') do |ig| %>|<%= ig %><% end %>"}) by(environment, bosh_name, bosh_deployment, bosh_job_name, bosh_job_index) > <%= p('bosh_alerts.job_persistent_disk_inodes_exhausted.threshold') %>
+        for: <%= p('bosh_alerts.job_persistent_disk_inodes_exhausted.evaluation_time') %>
+        labels:
+          owner: sn
+          service: bosh-job
+          severity: critical
+        annotations:
+          summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is running out of inodes"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` has used more than <%= p('bosh_alerts.job_persistent_disk_inodes_exhausted.threshold') %>% of its persistent disk inodes for <%= p('bosh_alerts.job_persistent_disk_inodes_exhausted.evaluation_time') %>"
+
