@@ -32,13 +32,13 @@ properties:
     default: 33
   cloudfoundry_alerts.overall_available_memory.evaluation_time:
     description: "Overall Available Memory alert evaluation time"
-    default: 15m
+    default: 12h
   cloudfoundry_alerts.max_available_memory.threshold:
     description: "Max Available Memory (MiB) alert threshold"
     default: 1024
   cloudfoundry_alerts.max_available_memory.evaluation_time:
     description: "Max Available Memory alert evaluation time"
-    default: 15m
+    default: 1h
 
   cloudfoundry_alerts.overall_available_disk.threshold:
     description: "Overall Available Disk (%) alert threshold"
