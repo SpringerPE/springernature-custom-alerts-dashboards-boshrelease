@@ -1,0 +1,1026 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "5.1.4"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": "5.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "5.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": "5.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1582631162404,
+  "links": [],
+  "panels": [
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#73BF69",
+        "rgba(112, 103, 95, 0.89)",
+        "rgba(112, 103, 95, 0.89)"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "decimals": 1,
+      "format": "decmbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 21,
+      "interval": "",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "cf_organization_total_memory_mb_quota{organization_name=\"$OrgName\"}*(1000/1024)",
+          "format": "time_series",
+          "instant": true,
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "1,100000",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory quota for $OrgName",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "rgba(112, 103, 95, 0.89)",
+        "rgba(112, 103, 95, 0.89)",
+        "rgba(112, 103, 95, 0.89)"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "decmbytes",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 19,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(cf_application_memory_mb{organization_name=\"$OrgName\", space_name=\"$SpaceName\"} * on (application_id) group_right(space_name) sum(cf_application_instances{state=\"STARTED\"}) by (application_id)) ",
+          "format": "time_series",
+          "instant": true,
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Memory Allocated",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 12,
+        "y": 0
+      },
+      "id": 35,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(sum(cf_application_info{organization_name=\"$OrgName\", space_name=\"$SpaceName\" ,state=\"STARTED\"}) by (application_name))",
+          "format": "time_series",
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "$OrgName-$SpaceName",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Number of Apps",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 4,
+        "x": 16,
+        "y": 0
+      },
+      "id": 32,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "options": {},
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(sum(cf_application_instances{organization_name=\"$OrgName\", space_name=\"$SpaceName\",state=\"STARTED\"}) by (space_name))",
+          "format": "time_series",
+          "instant": false,
+          "intervalFactor": 1,
+          "legendFormat": "$OrgName-$SpaceName",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Total Number of Instances",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS}",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 0,
+        "y": 2
+      },
+      "id": 13,
+      "links": [],
+      "options": {
+        "displayMode": "lcd",
+        "fieldOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "id": 0,
+                "op": "=",
+                "text": "N/A",
+                "type": 1,
+                "value": "null"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "nullValueMode": "connected",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#FA6400",
+                  "value": null
+                },
+                {
+                  "color": "#37872D",
+                  "value": 40
+                },
+                {
+                  "color": "#d44a3a",
+                  "value": 85
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": [],
+          "values": false
+        },
+        "orientation": "horizontal",
+        "showUnfilled": true
+      },
+      "pluginVersion": "6.6.1",
+      "targets": [
+        {
+          "expr": "avg((sum(min(firehose_container_metric_memory_bytes/1024/1024) by (instance_index, application_id)) by (application_id) / on(application_id) group_right(space_name) (cf_application_memory_mb{organization_name=\"$OrgName\", space_name=\"$SpaceName\"} * on (application_id) group_left(space_name) sum(cf_application_instances) by (application_id)))*100) by (organization_name)",
+          "format": "time_series",
+          "instant": true,
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Average assigned memory utilization in space $SpaceName",
+      "type": "bargauge"
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": "${DS_PROMETHEUS}",
+      "description": "Scale the quota when turned red",
+      "gridPos": {
+        "h": 3,
+        "w": 12,
+        "x": 12,
+        "y": 2
+      },
+      "id": 23,
+      "links": [],
+      "options": {
+        "displayMode": "lcd",
+        "fieldOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [
+              {
+                "id": 0,
+                "op": "=",
+                "text": "N/A",
+                "type": 1,
+                "value": "null"
+              }
+            ],
+            "max": 100,
+            "min": 0,
+            "nullValueMode": "connected",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#C4162A",
+                  "value": null
+                },
+                {
+                  "color": "#FF9830",
+                  "value": 10
+                },
+                {
+                  "color": "#37872D",
+                  "value": 15
+                }
+              ]
+            },
+            "title": "Quota used",
+            "unit": "percent"
+          },
+          "overrides": [],
+          "values": false
+        },
+        "orientation": "horizontal",
+        "showUnfilled": true
+      },
+      "pluginVersion": "6.6.1",
+      "targets": [
+        {
+          "expr": "100/min(cf_organization_total_memory_mb_quota{organization_name=\"$OrgName\"}*(1000/1024))*sum(cf_application_memory_mb{organization_name=\"$OrgName\"} * on (application_id) group_right(space_name) sum(cf_application_instances{state=\"STARTED\"}) by (application_id))",
+          "format": "time_series",
+          "instant": true,
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "",
+      "type": "bargauge"
+    },
+    {
+      "columns": [],
+      "datasource": "${DS_PROMETHEUS}",
+      "description": "",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 0,
+        "y": 5
+      },
+      "id": 30,
+      "links": [],
+      "options": {},
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 3,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "#1F60C4",
+            "#1F60C4",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": true,
+          "linkTargetBlank": true,
+          "linkTooltip": "go to ${__cell} overview",
+          "linkUrl": "https://mission-control.snpaas.eu/d/sf7EqRgZzrs/cf-app-overview?orgId=1&var-interval=5m&var-OrgName=$OrgName&var-SpaceName=$SpaceName&var-AppName=${__cell}",
+          "mappingType": 1,
+          "pattern": "application_name",
+          "thresholds": [
+            ""
+          ],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          "alias": "assigned_memory_utilized",
+          "align": "auto",
+          "colorMode": "cell",
+          "colors": [
+            "#FA6400",
+            "#37872D",
+            "rgba(245, 54, 54, 0.9)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [
+            "40",
+            "85"
+          ],
+          "type": "hidden",
+          "unit": "percent"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "sort(cf_application_info{organization_name=\"$OrgName\", space_name=\"$SpaceName\", state=\"STOPPED\"})",
+          "format": "table",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "{{application_name}}",
+          "refId": "A"
+        },
+        {
+          "expr": "",
+          "format": "table",
+          "intervalFactor": 1,
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Stopped applications",
+      "transform": "table",
+      "type": "table"
+    },
+    {
+      "columns": [
+        {
+          "text": "Avg",
+          "value": "avg"
+        }
+      ],
+      "datasource": "${DS_PROMETHEUS}",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 13,
+        "w": 12,
+        "x": 12,
+        "y": 5
+      },
+      "id": 34,
+      "options": {},
+      "pageSize": null,
+      "pluginVersion": "6.5.1",
+      "showHeader": true,
+      "sort": {
+        "col": 1,
+        "desc": false
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "Memory Utilization",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Avg",
+          "thresholds": [],
+          "type": "number",
+          "unit": "percent"
+        },
+        {
+          "alias": "App Name",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Metric",
+          "sanitize": false,
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "sort_desc(max((avg(min(firehose_container_metric_memory_bytes/1024/1024) by (instance_index, application_id)) by (application_id) / on(application_id) group_right(space_name) (cf_application_memory_mb * on (application_id) group_left(space_name) sum(cf_application_instances{organization_name=\"$OrgName\", space_name=\"$SpaceName\", state=\"STARTED\"}) by (application_id)))*100) by (application_name))",
+          "legendFormat": "{{application_name}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory Utilization per App",
+      "transform": "timeseries_aggregations",
+      "type": "table"
+    },
+    {
+      "activePatternIndex": 0,
+      "datasource": "${DS_PROMETHEUS}",
+      "defaultPattern": {
+        "bgColors": "green|red|red",
+        "bgColors_overrides": "0->green|2->red|1->yellow",
+        "clickable_cells_link": "",
+        "col_name": "number of dead instances",
+        "decimals": 2,
+        "delimiter": ".",
+        "enable_bgColor": true,
+        "enable_bgColor_overrides": false,
+        "enable_clickable_cells": false,
+        "enable_textColor": false,
+        "enable_textColor_overrides": false,
+        "enable_time_based_thresholds": false,
+        "enable_transform": false,
+        "enable_transform_overrides": false,
+        "filter": {
+          "value_above": "",
+          "value_below": ""
+        },
+        "format": "none",
+        "name": "Default Pattern",
+        "null_color": "",
+        "null_textcolor": "o",
+        "null_value": "No data",
+        "pattern": "*",
+        "row_col_wrapper": "_",
+        "row_name": "_series_",
+        "textColors": "red|orange|green",
+        "textColors_overrides": "0->red|2->green|1->yellow",
+        "thresholds": "1,100",
+        "time_based_thresholds": [],
+        "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+        "transform_values": "_value_|_value_|_value_",
+        "transform_values_overrides": "0->down|1->up",
+        "valueName": "avg"
+      },
+      "default_title_for_rows": "application_name",
+      "description": "No Data is good ;) here. Shows application whose desired number of instance are greater than number of running instances",
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 18
+      },
+      "hide_first_column": false,
+      "hide_headers": false,
+      "id": 11,
+      "links": [],
+      "options": {},
+      "patterns": [],
+      "row_col_wrapper": "_",
+      "sorting_props": {
+        "col_index": -1,
+        "direction": "desc"
+      },
+      "targets": [
+        {
+          "expr": "min(cf_application_instances{organization_name=~\"$OrgName\",space_name=\"$SpaceName\", state=\"STARTED\"} - cf_application_instances_running{organization_name=~\"engineering-enablement\"}>0) by (application_name)",
+          "format": "time_series",
+          "instant": true,
+          "intervalFactor": 1,
+          "legendFormat": "{{application_name}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "apps with crashed instances",
+      "type": "yesoreyeram-boomtable-panel"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "cacheTimeout": null,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "${DS_PROMETHEUS}",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "hiddenSeries": false,
+      "id": 28,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(sum(cf_application_instances{organization_name=\"$OrgName\", space_name=\"$SpaceName\",state=\"STARTED\"}) by (space_name))",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "$OrgName-$SpaceName",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Total Number of Instances",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 22,
+  "style": "dark",
+  "tags": [
+    "snpaas"
+  ],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "text": "content-consumption",
+          "value": "content-consumption"
+        },
+        "datasource": "${DS_PROMETHEUS}",
+        "definition": "label_values(cf_application_info, organization_name)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "OrgName",
+        "multi": false,
+        "name": "OrgName",
+        "options": [],
+        "query": "label_values(cf_application_info, organization_name)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "744e75bb-69d1-4cf4-b037-76875368097b",
+          "value": "744e75bb-69d1-4cf4-b037-76875368097b"
+        },
+        "datasource": "${DS_PROMETHEUS}",
+        "definition": "label_values(cf_application_info{organization_name=~\"$OrgName\",},organization_id)",
+        "hide": 2,
+        "includeAll": false,
+        "label": "OrgId",
+        "multi": false,
+        "name": "OrgId",
+        "options": [],
+        "query": "label_values(cf_application_info{organization_name=~\"$OrgName\",},organization_id)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "bigbird-live",
+          "value": "bigbird-live"
+        },
+        "datasource": "${DS_PROMETHEUS}",
+        "definition": "label_values(cf_application_info{organization_name=~\"$OrgName\"},space_name)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "SpaceName",
+        "multi": false,
+        "name": "SpaceName",
+        "options": [],
+        "query": "label_values(cf_application_info{organization_name=~\"$OrgName\"},space_name)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "utc",
+  "title": "SPACE Overview",
+  "uid": "cf_space_overview",
+  "version": 3
+}

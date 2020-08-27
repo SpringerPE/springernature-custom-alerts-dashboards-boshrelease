@@ -10,5 +10,12 @@ packages: []
 # otherwise they could be overwriten
 templates:
   cf_platform_dashboard.json: cf_platform_dashboard.json
+  cf_app_dashboard.json: cf_app_dashboard.json
+  cf-app-overview.json: cf-app-overview.json
+  cf-cells-capacity.json: cf-cells-capacity.json
+  cf-cells.json: cf-cells.json
+  cf-org-overview.json: cf-org-overview.json
+  cf-requests.json: cf-requests.json
+  cf-space-overview.json: cf-space-overview.json
 
 properties: {}

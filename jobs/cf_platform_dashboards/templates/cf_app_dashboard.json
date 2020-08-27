@@ -1182,7 +1182,9 @@
   "refresh": false,
   "schemaVersion": 16,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "snpaas"
+  ],
   "templating": {
     "list": [
       {
