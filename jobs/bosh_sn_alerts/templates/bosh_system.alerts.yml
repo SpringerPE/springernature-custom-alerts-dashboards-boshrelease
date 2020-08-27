@@ -10,7 +10,7 @@ groups:
           severity: warning
         annotations:
           summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is reporting a high CPU load average"
-          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` had a CPU load average (5m) above {{$value}} for <%= p('bosh_alerts.job_high_cpu_load.evaluation_time') %>"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` had a CPU load average (5m) of {{$value}} > #cpus for <%= p('bosh_alerts.job_high_cpu_load.evaluation_time') %>"
 
       - alert: SNBoshJobSystemLowFreeRAM
         expr: (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < <%= p('bosh_alerts.job_low_free_ram.threshold') %>) * on(instance) group_right label_replace(bosh_job_healthy{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.job_low_free_ram.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^compilation.*"}, "instance", "$1:9100", "bosh_job_ip", "(.*)")
@@ -33,7 +33,7 @@ groups:
           severity: warning
         annotations:
           summary: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` is reporting a high CPU usage"
-          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` had a CPU usage above {{$value}} for <%= p('bosh_alerts.job_high_cpu_usage.evaluation_time') %>"
+          description: "BOSH Job `{{$labels.environment}}/{{$labels.bosh_name}}/{{$labels.bosh_deployment}}/{{$labels.bosh_job_name}}/{{$labels.bosh_job_index}}` had a CPU usage of {{$value}} for <%= p('bosh_alerts.job_high_cpu_usage.evaluation_time') %>"
 
       - alert: SNBoshJobSwapIsFillingUp
         expr: ((1 - (node_memory_SwapFree_bytes / node_memory_SwapTotal_bytes)) * 100 > <%= p('bosh_alerts.job_swap.threshold') %>) * on(instance) group_right label_replace(bosh_job_healthy{bosh_deployment!~"<%= p('bosh_alerts.ignore_deployments') %><% if_p('bosh_alerts.job_swap.deployments_ignore') do |ig| %>|<%= ig %><% end %>",bosh_job_name!~"^compilation.*"}, "instance", "$1:9100", "bosh_job_ip", "(.*)")

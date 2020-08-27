@@ -52,7 +52,7 @@ properties:
     description: "Ignore deployment in alerts for job_low_free_ram"
   bosh_alerts.job_low_free_ram.threshold:
     description: "Job Low Free RAM pct alert threshold"
-    default: 5
+    default: 3
   bosh_alerts.job_low_free_ram.evaluation_time:
     description: "Job Low Free RAM alert evaluation time"
     default: 20m
@@ -70,10 +70,10 @@ properties:
     description: "Ignore deployment in alerts for job_swap"
   bosh_alerts.job_swap.threshold:
     description: "Job Swap pct alert threshold usage"
-    default: 1
+    default: 5
   bosh_alerts.job_swap.evaluation_time:
     description: "Job Swap alert evaluation time"
-    default: 10m
+    default: 30m
 
   bosh_alerts.disk.deployments_ignore:
     description: "Ignore deployment in alerts for disk alerts"
