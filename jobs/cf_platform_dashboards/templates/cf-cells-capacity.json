@@ -57,18 +57,16 @@
   "iteration": 1598369412951,
   "links": [
     {
-      "$$hashKey": "object:49",
       "asDropdown": true,
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": [],
+      "tags": ["snpaas"],
       "targetBlank": false,
-      "title": "CF",
+      "title": "SNPaaS",
       "type": "dashboards"
     },
     {
-      "$$hashKey": "object:50",
       "icon": "external link",
       "tags": [],
       "targetBlank": true,

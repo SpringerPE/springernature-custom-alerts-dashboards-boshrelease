@@ -1,4 +1,40 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "5.1.4"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": "5.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "5.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "singlestat",
+      "name": "Singlestat",
+      "version": "5.0.0"
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -23,11 +59,9 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": [
-        "cf"
-      ],
+      "tags": ["snpaas"],
       "targetBlank": false,
-      "title": "CF",
+      "title": "SNPaaS",
       "type": "dashboards"
     },
     {
@@ -45,7 +79,7 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "description": "Instantaneous number of sinks known to the SinkManager.",
       "editable": true,
       "error": false,
@@ -160,7 +194,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "description": "number of messages received by each Doppler instance (UDP, TCP, TLS).",
       "editable": true,
       "error": false,
@@ -265,7 +299,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "description": "",
       "editable": true,
       "error": false,
@@ -370,7 +404,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "description": "",
       "editable": true,
       "error": false,
@@ -477,7 +511,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "prometheus",
+      "datasource": "${DS_PROMETHEUS}",
       "description": "",
       "editable": true,
       "error": false,
@@ -584,8 +618,7 @@
   "schemaVersion": 25,
   "style": "dark",
   "tags": [
-    "cf",
-    "loggregator"
+    "snpaas"
   ],
   "templating": {
     "list": [
@@ -596,7 +629,7 @@
           "text": "live-gcp-prometheus",
           "value": "live-gcp-prometheus"
         },
-        "datasource": "prometheus",
+        "datasource": "${DS_PROMETHEUS}",
         "definition": "",
         "hide": 0,
         "includeAll": false,
@@ -622,7 +655,7 @@
           "text": "cf",
           "value": "cf"
         },
-        "datasource": "prometheus",
+        "datasource": "${DS_PROMETHEUS}",
         "definition": "",
         "hide": 0,
         "includeAll": false,
@@ -706,7 +739,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "CF: Doppler Server v3",
-  "uid": "cf-doppler-server-v3",
+  "title": "Loggregator Doppler Server",
+  "uid": "loggregator_doppler_server",
   "version": 6
 }
