@@ -15,7 +15,6 @@ templates:
   cf-cells-capacity.json: cf-cells-capacity.json
   cf-cells.json: cf-cells.json
   cf-doppler-server-v3.json: cf-doppler-server-v3.json
-  cf-org-overview.json: cf-org-overview.json
   cf-requests.json: cf-requests.json
   cf-space-overview.json: cf-space-overview.json
   varnish.json: varnish.json
