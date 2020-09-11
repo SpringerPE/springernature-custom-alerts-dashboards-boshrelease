@@ -104,16 +104,16 @@ properties:
     default: 5m
   cloudfoundry_alerts.app_instances_fewer_than_expected.threshold:
     description: "App Instances Fewer Than Expected alert threshold"
-    default: 20
+    default: 50
   cloudfoundry_alerts.app_instances_fewer_than_expected.evaluation_time:
     description: "App Instances Fewer Than Expected alert evaluation time"
     default: 30m
-#  cloudfoundry_alerts.app_instances_more_than_expected.threshold:
-#    description: "App Instances More Than Expected alert threshold"
-#    default: 20
-#  cloudfoundry_alerts.app_instances_more_than_expected.evaluation_time:
-#    description: "App Instances More Than Expected alert evaluation time"
-#    default: 5m
+  cloudfoundry_alerts.app_instances_more_than_expected.threshold:
+    description: "App Instances More Than Expected alert threshold"
+    default: 100
+  cloudfoundry_alerts.app_instances_more_than_expected.evaluation_time:
+    description: "App Instances More Than Expected alert evaluation time"
+    default: 5m
   cloudfoundry_alerts.rep_bulk_synch_duration.threshold:
     description: "Rep Bulk Synch Duration (seconds) alert threshold"
     default: 10
