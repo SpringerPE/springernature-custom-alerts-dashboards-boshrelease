@@ -1,0 +1,14 @@
+---
+name: go_graphite_dashboards
+
+description: |
+  Go Graphite Dashboards
+
+packages: []
+
+# DO NOT use the same names as other dashboards (from other jobs)
+# otherwise they could be overwriten
+templates:
+  go-graphite_dashboard.json: go-graphite_dashboard.json
+
+properties: {}

@@ -1,0 +1,1261 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1610557161118,
+  "links": [
+    {
+      "$$hashKey": "object:6569",
+      "icon": "info",
+      "tags": [],
+      "targetBlank": true,
+      "title": "Confluence documentation",
+      "tooltip": "Confluence documentation",
+      "type": "link",
+      "url": "https://confluence.springer-sbm.com/pages/viewpage.action?pageId=34479067"
+    },
+    {
+      "$$hashKey": "object:6570",
+      "icon": "info",
+      "tags": [],
+      "targetBlank": true,
+      "title": "Carbon-c-relay stats",
+      "tooltip": "Carbon-c-relay stats",
+      "type": "link",
+      "url": "https://github.com/grobian/carbon-c-relay#statistics"
+    },
+    {
+      "$$hashKey": "object:6571",
+      "icon": "info",
+      "tags": [],
+      "targetBlank": true,
+      "title": "Go-carbon",
+      "tooltip": "Go-carbon",
+      "type": "link",
+      "url": "https://github.com/lomik/go-carbon"
+    }
+  ],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS_GRAPHITE",
+      "decimals": 0,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 13,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 1,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": null,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "alias(sumSeries(summarize(nonNegativeDerivative(carbon.relays.graphite-statsd-relay_*.metricsReceived), '1minute', 'sum')), 'Relay received metrics p/m')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "C",
+          "target": "alias(sumSeries(summarize(nonNegativeDerivative(carbon.relays.graphite-statsd-relay_*.metricsSent), '1minute', 'sum')), 'Relay sent metrics p/m')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "alias(derivative(sumSeries(carbon.relays.graphite-statsd-relay_*.metricsDropped)), 'Dropped metrics')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "A",
+          "target": "alias(sumSeries(carbon.relays.graphite-statsd-relay_*.metricsQueued), 'Metrics queued (all nodes) p/m')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "F",
+          "target": "alias(derivative(sumSeries(carbon.relays.graphite-statsd-relay_*.metricsBlackholed)), 'Metrics blackholed (all nodes) p/m')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "E",
+          "target": "aliasByNode(summarize(derivative(carbon.relays.graphite-statsd-relay_*.metricsBlackholed), '5m', 'sum', false), 3, -2)",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "G",
+          "target": "alias(sumSeries(derivative(carbon.relays.graphite-statsd-relay_*.metricsBlackholed)), 'Metrics Blackholed all nodes')",
+          "textEditor": true
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Relay metrics",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:2233",
+          "decimals": 0,
+          "format": "none",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:2234",
+          "decimals": 0,
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS_GRAPHITE",
+      "decimals": 0,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "hiddenSeries": false,
+      "id": 12,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": null,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "A",
+          "target": "alias(sumSeries(carbon.relays.graphite-statsd-relay_*.metricsQueued), 'Metrics queued all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "E",
+          "target": "aliasByNode(carbon.relays.graphite-statsd-relay_*.metricsQueued, 3, -2)",
+          "textEditor": true
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Relay metrics Queued",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:2233",
+          "decimals": 0,
+          "format": "none",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:2234",
+          "decimals": 0,
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS_GRAPHITE",
+      "decimals": 0,
+      "description": "",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "hiddenSeries": false,
+      "id": 13,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sideWidth": null,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "D",
+          "target": "alias(sumSeries(summarize(nonNegativeDerivative(carbon.relays.graphite-statsd-relay_*.metricsReceived), '1minute', 'sum')), 'Relay received metrics p/m')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "C",
+          "target": "alias(sumSeries(summarize(nonNegativeDerivative(carbon.relays.graphite-statsd-relay_*.metricsSent), '1minute', 'sum')), 'Relay sent metrics p/m')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "alias(derivative(sumSeries(carbon.relays.graphite-statsd-relay_*.metricsDropped)), 'Dropped metrics')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "A",
+          "target": "alias(sumSeries(carbon.relays.graphite-statsd-relay_*.metricsQueued), 'Metrics queued all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "E",
+          "target": "aliasByNode(carbon.relays.graphite-statsd-relay_*.metricsQueued, 3, -2)",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "F",
+          "target": "aliasByNode(summarize(derivative(carbon.relays.graphite-statsd-relay_*.metricsBlackholed), '5m', 'sum', false), 3, -2)",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "G",
+          "target": "aliasByNode(carbon.relays.graphite-statsd-relay_*.metricsDropped,3, -2)",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "H",
+          "target": "aliasByNode(carbon.relays.graphite-statsd-relay_*.metricsBlackholed,3, -2)",
+          "textEditor": true
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Relay metrics Dropped",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:2233",
+          "decimals": 0,
+          "format": "none",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:2234",
+          "decimals": 0,
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS_GRAPHITE",
+      "decimals": 0,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "hiddenSeries": false,
+      "id": 3,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "E",
+          "target": "alias(sumSeries(carbon.agents.graphite-backend.*.tcp.metricsReceived), 'Metrics received all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "A",
+          "target": "alias(sumSeries(carbon.agents.graphite-backend.*.cache.metrics), 'Metrics cached all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "alias(sumSeries(carbon.agents.graphite-backend.*.cache.size), 'Cache size all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "C",
+          "target": "alias(sumSeries(carbon.agents.graphite-backend.*.persister.committedPoints), 'Committed points all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "alias(sumSeries(carbon.agents.graphite-backend.*.persister.created), 'Created points all nodes')",
+          "textEditor": true
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Go carbon agent metrics",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:2569",
+          "decimals": 0,
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:2570",
+          "decimals": 0,
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS_GRAPHITE",
+      "decimals": 3,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "hiddenSeries": false,
+      "id": 9,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pluginVersion": "7.0.6",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Total",
+          "yaxis": 1
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "B",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.metrics_received), 'Total')",
+          "textEditor": true
+        },
+        {
+          "refCount": 0,
+          "refId": "A",
+          "target": "stats.statsd.graphite-*.metrics_received",
+          "textEditor": true
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Stats metrics received p/m",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 1,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:4436",
+          "decimals": 4,
+          "format": "cpm",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:4437",
+          "decimals": 3,
+          "format": "cpm",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS_GRAPHITE",
+      "decimals": 0,
+      "description": "",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 43
+      },
+      "hiddenSeries": false,
+      "id": 8,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Processing time all nodes",
+          "yaxis": 2
+        },
+        {
+          "alias": "Flush time all nodes",
+          "yaxis": 2
+        },
+        {
+          "alias": "Last flush all nodes",
+          "yaxis": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "refCount": 0,
+          "refId": "A",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.packets_received), 'Packets received all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "D",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.graphiteStats.flush_length), 'Flush length all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "B",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.processing_time), 'Processing time all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "C",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.graphiteStats.flush_time), 'Flush time all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "E",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.graphiteStats.last_flush), 'Last flush all nodes')",
+          "textEditor": true
+        },
+        {
+          "refCount": 0,
+          "refId": "F",
+          "target": "stats.statsd.graphite-*.packets_received",
+          "textEditor": true
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Statsd Packets Received",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:3957",
+          "decimals": 0,
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:3958",
+          "decimals": 0,
+          "format": "Misc",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS_GRAPHITE",
+      "decimals": 0,
+      "description": "",
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 43
+      },
+      "hiddenSeries": false,
+      "id": 16,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Processing time all nodes",
+          "yaxis": 2
+        },
+        {
+          "alias": "Flush time all nodes",
+          "yaxis": 2
+        },
+        {
+          "alias": "Last flush all nodes",
+          "yaxis": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "A",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.packets_received), 'Packets received all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.graphiteStats.flush_length), 'Flush length all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "B",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.processing_time), 'Processing time all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "C",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.graphiteStats.flush_time), 'Flush time all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "E",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.graphiteStats.last_flush), 'Last flush all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "F",
+          "target": "stats.statsd.graphite-*.graphiteStats.flush_length",
+          "textEditor": true
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Statsd Flush",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:3957",
+          "decimals": 0,
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:3958",
+          "decimals": 0,
+          "format": "ms",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$DS_GRAPHITE",
+      "decimals": 0,
+      "editable": true,
+      "error": false,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 55
+      },
+      "hiddenSeries": false,
+      "id": 15,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Processing time all nodes",
+          "yaxis": 2
+        },
+        {
+          "alias": "Flush time all nodes",
+          "yaxis": 2
+        },
+        {
+          "alias": "Last flush all nodes",
+          "yaxis": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "B",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.processing_time), 'Processing time all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "C",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.graphiteStats.flush_time), 'Flush time all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": true,
+          "refCount": 0,
+          "refId": "E",
+          "target": "alias(sumSeries(stats.statsd.graphite-*.graphiteStats.last_flush), 'Last flush all nodes')",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "A",
+          "target": "stats.statsd.graphite-*.processing_time",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "D",
+          "target": "stats.statsd.graphite-*.graphiteStats.flush_time",
+          "textEditor": true
+        },
+        {
+          "hide": false,
+          "refCount": 0,
+          "refId": "F",
+          "target": "derivative(stats.statsd.graphite-*.graphiteStats.last_flush)",
+          "textEditor": false
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Statsd time metrics",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "transformations": [],
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:3957",
+          "decimals": 0,
+          "format": "none",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:3958",
+          "decimals": 0,
+          "format": "ms",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 25,
+  "style": "dark",
+  "tags": [
+    "METRICS"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "Graphite",
+          "value": "Graphite"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "DS_GRAPHITE",
+        "options": [],
+        "query": "graphite",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now-2m"
+  },
+  "timepicker": {
+    "now": true,
+    "nowDelay": "2m",
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "browser",
+  "title": "Go-graphite (Metrics, Agents, Statsd)",
+  "uid": "go-graphite",
+  "version": 2
+}
