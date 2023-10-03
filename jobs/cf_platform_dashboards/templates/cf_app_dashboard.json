@@ -1359,6 +1359,6 @@
   },
   "timezone": "",
   "title": "CF: Apps Overview",
-  "uid": "cf_app_dashboard",
+  "uid": "sn_cf_app_dashboard",
   "version": 1
 }

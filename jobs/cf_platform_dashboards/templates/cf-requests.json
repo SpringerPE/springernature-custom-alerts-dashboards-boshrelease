@@ -450,6 +450,6 @@
   },
   "timezone": "utc",
   "title": "CF Requests",
-  "uid": "cf_requests",
+  "uid": "sn_cf_requests",
   "version": 2
 }

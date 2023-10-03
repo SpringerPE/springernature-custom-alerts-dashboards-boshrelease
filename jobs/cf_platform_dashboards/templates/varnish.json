@@ -2082,6 +2082,6 @@
   },
   "timezone": "utc",
   "title": "Varnish",
-  "uid": "varnish",
+  "uid": "sn_varnish",
   "version": 2
 }

@@ -568,6 +568,6 @@
   },
   "timezone": "utc",
   "title": "CF Cells Performance",
-  "uid": "cf_cells",
+  "uid": "sn_cf_cells",
   "version": 1
 }

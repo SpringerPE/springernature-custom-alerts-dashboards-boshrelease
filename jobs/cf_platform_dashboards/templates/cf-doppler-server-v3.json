@@ -740,6 +740,6 @@
   },
   "timezone": "browser",
   "title": "Loggregator Doppler Server",
-  "uid": "loggregator_doppler_server",
+  "uid": "sn_loggregator_doppler_server",
   "version": 6
 }
