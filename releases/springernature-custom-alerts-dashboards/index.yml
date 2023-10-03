@@ -43,6 +43,8 @@ builds:
     version: "14.16"
   4f32729b-da71-43b4-7e70-9df60f80b47b:
     version: "14.28"
+  5966ce27-0768-4550-64da-fa58d809d9c8:
+    version: "14.40"
   59f7f0ed-87c3-4305-7e75-70cc84a176d5:
     version: "14.26"
   603ada98-33f8-4ec9-6ee8-527ef19cfb03:
